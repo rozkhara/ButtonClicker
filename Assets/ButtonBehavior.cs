@@ -6,14 +6,15 @@ public class ButtonBehavior : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        gameObject.transform.Translate(new Vector3(0f, -0.5f, 0f) * transform.lossyScale.x);
         SoundManager.Instance.PlaySFXSound("ButtonDown");
+        gameObject.transform.Translate(new Vector3(0f, -0.5f, 0f) * transform.lossyScale.x);
+        GameManager.Instance.ChangeScore(1);
     }
 
     private void OnMouseUp()
     {
-        gameObject.transform.Translate(new Vector3(0f, 0.5f, 0f) * transform.lossyScale.x);
         SoundManager.Instance.PlaySFXSound("ButtonUp");
+        gameObject.transform.Translate(new Vector3(0f, 0.5f, 0f) * transform.lossyScale.x);
     }
 
     private void OnMouseUpAsButton()
