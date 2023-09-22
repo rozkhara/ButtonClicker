@@ -60,3 +60,42 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 }
+
+public class automata
+{
+    int id;
+    int weight;
+    int Level;
+    int Upgradelevel;
+    public long increment;
+
+    public void cal()
+    {
+        increment = weight * Level;
+    }
+}
+
+public class automata_list
+{
+    automata hand = new automata();
+    automata spring = new automata();
+    automata waterwheel = new automata();
+    automata windmill = new automata();
+    automata hamster = new automata();
+    automata steam1 = new automata();
+    automata steam2 = new automata();
+    automata steam3 = new automata();
+    long total_increment;
+    public void cal()
+    {
+        total_increment =
+            hand.increment +
+            spring.increment +
+            waterwheel.increment +
+            windmill.increment +
+            hamster.increment +
+            steam1.increment +
+            steam2.increment +
+            steam3.increment;
+    }
+}
