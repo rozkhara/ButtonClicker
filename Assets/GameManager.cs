@@ -29,6 +29,27 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+
+        List<automata> automata_list = new List<automata>();
+
+        automata hand = new automata();
+        automata spring = new automata();
+        automata waterwheel = new automata();
+        automata windmill = new automata();
+        automata hamster = new automata();
+        automata steam1 = new automata();
+        automata steam2 = new automata();
+        automata steam3 = new automata();
+
+        automata_list.Add(hand);
+        automata_list.Add(spring);
+        automata_list.Add(waterwheel);
+        automata_list.Add(windmill);
+        automata_list.Add(hamster);
+        automata_list.Add(steam1);
+        automata_list.Add(steam2);
+        automata_list.Add(steam3);
+
     }
 
     /// <summary>
@@ -59,9 +80,11 @@ public class GameManager : MonoBehaviour
         }
         return Score;
     }
+
+
 }
 
-public class automata
+public class automata : ISubject
 {
     int id;
     int weight;
@@ -75,27 +98,23 @@ public class automata
     }
 }
 
-public class automata_list
+public interface ISubject
 {
-    automata hand = new automata();
-    automata spring = new automata();
-    automata waterwheel = new automata();
-    automata windmill = new automata();
-    automata hamster = new automata();
-    automata steam1 = new automata();
-    automata steam2 = new automata();
-    automata steam3 = new automata();
-    long total_increment;
-    public void cal()
+    void AddObserver(Observer observer)
     {
-        total_increment =
-            hand.increment +
-            spring.increment +
-            waterwheel.increment +
-            windmill.increment +
-            hamster.increment +
-            steam1.increment +
-            steam2.increment +
-            steam3.increment;
+
     }
+    void RemoveObserver(Observer observer)
+    {
+
+    }
+    void NotifyObserver()
+    {
+
+    }
+}
+
+public interface Observer
+{
+
 }
