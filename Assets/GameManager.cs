@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        store store = new store();
+
         List<automata> automata_list = new List<automata>();
 
         automata hand = new automata();
@@ -50,6 +52,9 @@ public class GameManager : MonoBehaviour
         automata_list.Add(steam2);
         automata_list.Add(steam3);
 
+        auto_sum auto_sum = new auto_sum();
+
+        auto_sum.automatas = automata_list;
     }
 
     /// <summary>
@@ -84,37 +89,81 @@ public class GameManager : MonoBehaviour
 
 }
 
-public class automata : ISubject
+public class store : ISubject
+{
+    List<IObserver> observer_list = new List<IObserver>();
+
+    public void AddObserver(IObserver observer)
+    {
+        observer_list.Add(observer);
+    }
+    public void RemoveObserver(IObserver observer)
+    {
+        observer_list.Remove(observer);
+    }
+    public void NotifyObserver()
+    {
+        foreach (IObserver observer in observer_list)
+        {
+            observer.subject_alert();
+        }
+    }
+}
+
+public class automata : ISubject, IObserver
 {
     int id;
-    int weight;
-    int Level;
-    int Upgradelevel;
-    public long increment;
+    int price;
+    int sol_production;
+    public int all_production;
+    int quantity;
+    List<IObserver> observer_list = new List<IObserver>();
 
-    public void cal()
+    public void subject_alert()
     {
-        increment = weight * Level;
+        all_production = sol_production * quantity;
+        NotifyObserver();
+    }
+
+    public void AddObserver(IObserver observer)
+    {
+        observer_list.Add(observer);
+    }
+    public void RemoveObserver(IObserver observer)
+    {
+        observer_list.Remove(observer);
+    }
+    public void NotifyObserver()
+    {
+        foreach (IObserver observer in observer_list)
+        {
+            observer.subject_alert();
+        }
+    }
+}
+
+public class auto_sum : IObserver
+{
+    public List<automata> automatas = new List<automata>();
+    public long increment;
+    public void subject_alert()
+    {
+        foreach(automata automata in automatas)
+        {
+            increment += automata.all_production;
+        }
     }
 }
 
 public interface ISubject
 {
-    void AddObserver(Observer observer)
-    {
-
-    }
-    void RemoveObserver(Observer observer)
-    {
-
-    }
-    void NotifyObserver()
-    {
-
-    }
+    void AddObserver(IObserver observer);
+    void RemoveObserver(IObserver observer);
+    void NotifyObserver();
 }
 
-public interface Observer
+public interface IObserver
 {
-
+    public void subject_alert();
 }
+
