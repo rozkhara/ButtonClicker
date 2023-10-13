@@ -5,11 +5,12 @@ using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    public static long Score { get; private set; }
+    public static long Score;
 
     public static GameManager Instance
     {
@@ -30,18 +31,20 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        Score = 0;
+
         store store = new store();
 
         List<automata> automata_list = new List<automata>();
 
-        automata hand = new automata();
-        automata spring = new automata();
-        automata waterwheel = new automata();
-        automata windmill = new automata();
-        automata hamster = new automata();
-        automata steam1 = new automata();
-        automata steam2 = new automata();
-        automata steam3 = new automata();
+        automata hand = new automata(1,1);
+        automata spring = new automata(5,5);
+        automata waterwheel = new automata(10,10);
+        automata windmill = new automata(15,15);
+        automata hamster = new automata(20,20);
+        automata steam1 = new automata(30,30);
+        automata steam2 = new automata(40, 40);
+        automata steam3 = new automata(50, 50);
 
         automata_list.Add(hand);
         automata_list.Add(spring);
@@ -54,7 +57,28 @@ public class GameManager : MonoBehaviour
 
         auto_sum auto_sum = new auto_sum();
 
+        store.AddObserver(hand);
+        store.AddObserver(spring);
+        store.AddObserver(waterwheel);
+        store.AddObserver(windmill);
+        store.AddObserver(hamster);
+        store.AddObserver(steam1);
+        store.AddObserver(steam2);
+        store.AddObserver(steam3);
+
+        hand.AddObserver(auto_sum);
+        spring.AddObserver(auto_sum);
+        waterwheel.AddObserver(auto_sum);
+        windmill.AddObserver(auto_sum);
+        hamster.AddObserver(auto_sum);
+        steam1.AddObserver(auto_sum);
+        steam2.AddObserver(auto_sum);
+        steam3.AddObserver(auto_sum);
+
+
         auto_sum.automatas = automata_list;
+
+        Fauto_sum(auto_sum);
     }
 
     /// <summary>
@@ -86,12 +110,18 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 
+    IEnumerator Fauto_sum(auto_sum auto_sum)
+    {
+        yield return new WaitForSecondsRealtime(1);
+        Score += auto_sum.increment;
+    }
+
 
 }
 
 public class store : ISubject
 {
-    List<IObserver> observer_list = new List<IObserver>();
+    public List<IObserver> observer_list = new List<IObserver>();
 
     public void AddObserver(IObserver observer)
     {
@@ -108,17 +138,37 @@ public class store : ISubject
             observer.subject_alert();
         }
     }
+
+    public void BuyAutomata(automata automata)
+    {
+        GameManager.Score -= automata.price;
+        automata.quantity += 1;
+        NotifyObserver();
+    }
+
+    public void Buy_10Automata(automata automata)
+    {
+        GameManager.Score -= automata.price * 10;
+        automata.quantity += 10;
+        NotifyObserver();
+    }
+
 }
 
 public class automata : ISubject, IObserver
 {
-    int id;
-    int price;
+    //int id;
+    public int price;
     int sol_production;
-    public int all_production;
-    int quantity;
-    List<IObserver> observer_list = new List<IObserver>();
+    public int all_production = 0;
+    public int quantity=0;
+    public List<IObserver> observer_list = new List<IObserver>();
 
+    public automata(int pricein, int sol)
+    {
+        price = pricein;
+        sol_production = sol;
+    }
     public void subject_alert()
     {
         all_production = sol_production * quantity;
