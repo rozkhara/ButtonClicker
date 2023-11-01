@@ -10,7 +10,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    public static long Score;
+    public static long Score { get; private set; }
 
     public static GameManager Instance
     {
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     /// <param name="value">Value to modify the current score with</param>
     /// <param name="operator">+, -, /, *</param>
     /// <returns></returns>
-    public long ChangeScore(int value, string @operator = "+")
+    public long SetScore(int value, string @operator = "+")
     {
         long _score = Score;
         try
@@ -141,16 +141,30 @@ public class store : ISubject
 
     public void BuyAutomata(automata automata)
     {
-        GameManager.Score -= automata.price;
-        automata.quantity += 1;
-        NotifyObserver();
+        if (GameManager.Score >= automata.price)
+        {
+            GameManager.Instance.SetScore(automata.price, "-");
+            automata.SetAutomata(1, "+");
+            NotifyObserver();
+        }
+        else
+        {
+
+        }
     }
 
     public void Buy_10Automata(automata automata)
     {
-        GameManager.Score -= automata.price * 10;
-        automata.quantity += 10;
-        NotifyObserver();
+        if (GameManager.Score >= automata.price * 10)
+        {
+            GameManager.Instance.SetScore(automata.price * 10, "-");
+            automata.SetAutomata(10, "+");
+            NotifyObserver();
+        }
+        else
+        {
+
+        }
     }
 
 }
@@ -158,10 +172,10 @@ public class store : ISubject
 public class automata : ISubject, IObserver
 {
     //int id;
-    public int price;
+    public int price { get; private set; }
     int sol_production;
-    public int all_production = 0;
-    public int quantity=0;
+    public int all_production { get; private set; } = 0;
+    public int quantity { get; private set; } = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
     public automata(int pricein, int sol)
@@ -190,12 +204,23 @@ public class automata : ISubject, IObserver
             observer.subject_alert();
         }
     }
+
+    public long SetAutomata(int value, string @operator = "+")
+    {
+        quantity = @operator switch
+        {
+            "+" => quantity + value,
+            "-" => quantity - value,
+            _ => throw new Exception()
+        };
+        return quantity;
+    }
 }
 
 public class auto_sum : IObserver
 {
     public List<automata> automatas = new List<automata>();
-    public long increment;
+    public long increment { get; private set; }
     public void subject_alert()
     {
         foreach(automata automata in automatas)
