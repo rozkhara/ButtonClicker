@@ -35,16 +35,23 @@ public class GameManager : MonoBehaviour
 
         store store = new store();
 
+        era ancient = new era();
+        era steam = new era();
+        era modern = new era();
+        era electronic = new era();
+        era future = new era();
+
         List<automata> automata_list = new List<automata>();
 
-        automata hand = new automata(1,1);
-        automata spring = new automata(5,5);
-        automata waterwheel = new automata(10,10);
-        automata windmill = new automata(15,15);
-        automata hamster = new automata(20,20);
-        automata steam1 = new automata(30,30);
-        automata steam2 = new automata(40, 40);
-        automata steam3 = new automata(50, 50);
+        automata hand = new automata(ancient,1,1);
+        automata spring = new automata(ancient, 5,5);
+        automata waterwheel = new automata(ancient, 10,10);
+        automata windmill = new automata(ancient, 15,15);
+        automata hamster = new automata(ancient, 20,20);
+
+        automata steam1 = new automata(steam, 30,30);
+        automata steam2 = new automata(steam, 40, 40);
+        automata steam3 = new automata(steam, 50, 50);
 
         automata_list.Add(hand);
         automata_list.Add(spring);
@@ -65,6 +72,12 @@ public class GameManager : MonoBehaviour
         store.AddObserver(steam1);
         store.AddObserver(steam2);
         store.AddObserver(steam3);
+
+        ancient.AddObserver(hand);
+        ancient.AddObserver(spring);
+        ancient.AddObserver(waterwheel);
+        ancient.AddObserver(windmill);
+        ancient.AddObserver(hamster);
 
         hand.AddObserver(auto_sum);
         spring.AddObserver(auto_sum);
@@ -123,6 +136,7 @@ public class store : ISubject
 {
     public List<IObserver> observer_list = new List<IObserver>();
 
+
     public void AddObserver(IObserver observer)
     {
         observer_list.Add(observer);
@@ -138,6 +152,7 @@ public class store : ISubject
             observer.subject_alert();
         }
     }
+
 
     public void BuyAutomata(automata automata)
     {
@@ -167,24 +182,81 @@ public class store : ISubject
         }
     }
 
+    public void Buyeff(era effobject)
+    {
+        if (GameManager.Score >= effobject.price * 10)
+        {
+            GameManager.Instance.SetScore(effobject.price, "-");
+            effobject.SetPhase(1, "+");
+            NotifyObserver();
+        }
+        else
+        {
+
+        }
+    }
+
+}
+
+public class era : ISubject, IObserver
+{
+    public List<IObserver> observer_list = new List<IObserver>();
+    public int phase { get; private set; } = 0;
+    public double efficiency { get; private set; } = 1;
+    public int price { get; private set; }
+
+    public void subject_alert()
+    {
+        NotifyObserver();
+    }
+
+    public void AddObserver(IObserver observer)
+    {
+        observer_list.Add(observer);
+    }
+    public void RemoveObserver(IObserver observer)
+    {
+        observer_list.Remove(observer);
+    }
+    public void NotifyObserver()
+    {
+        foreach (IObserver observer in observer_list)
+        {
+            observer.subject_alert();
+        }
+    }
+    public long SetPhase(int value, string @operator = "+")
+    {
+        phase = @operator switch
+        {
+            "+" => phase + value,
+            "-" => phase - value,
+            _ => throw new Exception()
+        };
+        return phase;
+    }
 }
 
 public class automata : ISubject, IObserver
 {
     //int id;
+    era tag;
     public int price { get; private set; }
+    int default_production;
     int sol_production;
     public int all_production { get; private set; } = 0;
     public int quantity { get; private set; } = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
-    public automata(int pricein, int sol)
+    public automata(era tag, int pricein, int sol)
     {
+        this.tag = tag;
         price = pricein;
-        sol_production = sol;
+        default_production = sol;
     }
     public void subject_alert()
     {
+        sol_production = (int)(default_production * tag.efficiency);
         all_production = sol_production * quantity;
         NotifyObserver();
     }
@@ -215,6 +287,7 @@ public class automata : ISubject, IObserver
         };
         return quantity;
     }
+
 }
 
 public class auto_sum : IObserver
