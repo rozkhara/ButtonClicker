@@ -8,7 +8,7 @@ public class ButtonBehavior : MonoBehaviour
     {
         SoundManager.Instance.PlaySFXSound("ButtonDown");
         gameObject.transform.Translate(new Vector3(0f, -0.5f, 0f) * transform.lossyScale.x);
-        GameManager.Instance.ChangeScore(1);
+        //GameManager.Instance.ChangeScore(1);
     }
 
     private void OnMouseUp()
