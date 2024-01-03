@@ -15,14 +15,14 @@ public class StoreButtonUI : MonoBehaviour
         if (isopen == false)
         {
             isopen = true;
-            storebutton.GetComponent<RectTransform>().anchoredPosition = new Vector2(284, 5);
-            storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(392, 0);
+            storebutton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-16, 5);
+            storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(242, 0);
         }
         else
         {
             isopen = false;
             storebutton.GetComponent<RectTransform>().anchoredPosition = new Vector2(467, 5);
-            storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(600, 0);
+            storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(729, 0);
         }
     }
 }
