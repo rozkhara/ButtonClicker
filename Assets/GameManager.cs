@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static long Score { get; private set; }
 
+    public store store = new store();
+
+    public era ancient = new era();
+    public era steam = new era();
+    public era modern = new era();
+    public era electronic = new era();
+    public era future = new era();
+
     public static GameManager Instance
     {
         get
@@ -33,13 +41,7 @@ public class GameManager : MonoBehaviour
 
         Score = 0;
 
-        store store = new store();
 
-        era ancient = new era();
-        era steam = new era();
-        era modern = new era();
-        era electronic = new era();
-        era future = new era();
 
         List<automata> automata_list = new List<automata>();
 
