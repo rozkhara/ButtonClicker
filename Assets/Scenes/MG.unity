@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoPanel: {fileID: 1675633044}
+  hitObject: {fileID: 0}
 --- !u!1 &723594859
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +314,7 @@ GameObject:
   - component: {fileID: 742159768}
   - component: {fileID: 742159767}
   - component: {fileID: 742159766}
+  - component: {fileID: 742159770}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Automata
@@ -407,6 +409,24 @@ Transform:
   - {fileID: 1568566844}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &742159770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742159765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 7.91
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &779148301
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229d75ff4e8dba24a8e07eb3326921ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchManager: {fileID: 699003867}
 --- !u!4 &1638568584
 Transform:
   m_ObjectHideFlags: 0

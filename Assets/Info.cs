@@ -37,6 +37,7 @@ public class Info: MonoBehaviour
     {
         gameObject.SetActive(false);
         Camera.main.transform.position = new Vector3(0f, 1f, -10f);
+        GameManager.Instance.touchManager.hitObject?.GetComponent<Outline>().TurnOffOutline();
     }
 
 }

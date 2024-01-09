@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TouchManager : MonoBehaviour
 {
     public Info infoPanel;
+    public GameObject hitObject;
 
     // Update is called once per frame
     void Update()
@@ -20,9 +21,11 @@ public class TouchManager : MonoBehaviour
                 {
                     Debug.Log(hit.transform.gameObject.name);
 
+                    hitObject = hit.transform.gameObject;
+
                     //Camera.main.transform.position = hit.transform.position - 5f * Vector3.forward;
 
-                    StartCoroutine(LerpCamera(Camera.main.transform.position, hit.transform.position - 5f * Vector3.forward, hit.transform.gameObject.name));
+                    StartCoroutine(LerpCamera(Camera.main.transform.position, hit.transform.position - 5f * Vector3.forward));
 
                     //infoPanel.SetActive(true, hit.transform.gameObject.name);
                     //infoPanel.TurnOn(hit.transform.gameObject.name);
@@ -31,7 +34,7 @@ public class TouchManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LerpCamera(Vector3 startPos, Vector3 endPos,string str)
+    public IEnumerator LerpCamera(Vector3 startPos, Vector3 endPos)
     {
         float delta = 0;
         float duration = 2f;
@@ -50,6 +53,7 @@ public class TouchManager : MonoBehaviour
         }
 
         Camera.main.transform.position = endPos;
-        infoPanel.TurnOn(str);
+        infoPanel.TurnOn(hitObject.name);
+        hitObject.GetComponent<Outline>().TurnOn();
     }
 }
