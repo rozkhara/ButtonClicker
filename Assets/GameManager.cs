@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public era electronic = new era();
     public era future = new era();
 
+    public static List<automata> automata_list = new List<automata>();
     public static GameManager Instance
     {
         get
@@ -40,10 +41,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         Score = 0;
-
-
-
-        List<automata> automata_list = new List<automata>();
 
         automata hand = new automata(ancient,1,1);
         automata spring = new automata(ancient, 5,5);
@@ -117,11 +114,13 @@ public class GameManager : MonoBehaviour
                 "*" => Score * value,
                 _ => throw new Exception()
             };
+            
         }
         catch (DivideByZeroException)
         {
             Score = _score;
         }
+        Debug.Log(Score);
         return Score;
     }
 
@@ -163,6 +162,7 @@ public class store : ISubject
             GameManager.Instance.SetScore(automata.price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
+            Debug.Log("BuyAutomata");
         }
         else
         {

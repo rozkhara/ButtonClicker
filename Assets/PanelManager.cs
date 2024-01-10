@@ -1,6 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class PanelManager 
+public class PanelManager: MonoBehaviour
 {
-    public Image image;
+    public UnityEngine.UI.Image panel1;
+
+    public void onclick()
+    {
+        BuyButtonUI.target = GameManager.automata_list[0];
+    }
 }
