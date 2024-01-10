@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public era electronic = new era();
     public era future = new era();
 
+    public TouchManager touchManager;
+
     public static List<automata> automata_list = new List<automata>();
     public static GameManager Instance
     {
