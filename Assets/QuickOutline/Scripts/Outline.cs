@@ -80,6 +80,8 @@ public class Outline : MonoBehaviour {
 
   private bool needsUpdate;
 
+    private bool isOutline = false;
+
   void Awake() {
 
     // Cache renderers
@@ -100,6 +102,9 @@ public class Outline : MonoBehaviour {
   }
 
   public void TurnOn() {
+        if (isOutline)
+            return;
+        isOutline = true;
     foreach (var renderer in renderers) {
 
       // Append outline shaders
@@ -148,6 +153,7 @@ public class Outline : MonoBehaviour {
 
       renderer.materials = materials.ToArray();
     }
+        isOutline = false;
   }
 
   void OnDestroy() {
