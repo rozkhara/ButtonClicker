@@ -35,7 +35,7 @@ public class Info : MonoBehaviour
 
     public void TurnOff()
     {
-        StartCoroutine(GameManager.Instance.touchManager.LerpCamera(Camera.main.transform.position, new Vector3(0f, 1f, -10f), false)); 
+        GameManager.Instance.touchManager.LerpCameraAni(Camera.main.transform.position, new Vector3(0f, 1f, -10f), false);
         //Camera.main.transform.position = new Vector3(0f, 1f, -10f);
         //GameManager.Instance.touchManager.hitObject?.GetComponent<Outline>().TurnOffOutline();
     }

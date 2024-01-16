@@ -7,6 +7,8 @@ public class TouchManager : MonoBehaviour
 {
     public Info infoPanel;
     public GameObject hitObject;
+    public GameObject clickedObject;
+    public IEnumerator nowCameraLerpCorotuine;
 
     // Update is called once per frame
     void Update()
@@ -15,8 +17,10 @@ public class TouchManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(hitObject != null)
-                StartCoroutine(LerpCamera(Camera.main.transform.position, hitObject.transform.position - 5f * Vector3.forward,true));
+            if (hitObject != null)
+            {
+                LerpCameraAni(Camera.main.transform.position, Vector3.zero, true);
+            }
         }
 
     }
@@ -48,6 +52,24 @@ public class TouchManager : MonoBehaviour
         }
     }
 
+    public void LerpCameraAni(Vector3 startPos, Vector3 endPos, bool b)
+    {
+        if (nowCameraLerpCorotuine != null)
+        {
+            StopCoroutine(nowCameraLerpCorotuine);
+            infoPanel.TurnOffObject();
+            clickedObject = null;
+        }
+
+        if (b)
+        {
+            clickedObject = hitObject;
+            endPos = clickedObject.transform.position - 5f * Vector3.forward;
+        }
+        nowCameraLerpCorotuine = LerpCamera(startPos, endPos, b);
+        StartCoroutine(nowCameraLerpCorotuine);
+    }
+
     public IEnumerator LerpCamera(Vector3 startPos, Vector3 endPos, bool b)
     {
         float delta = 0;
@@ -67,10 +89,14 @@ public class TouchManager : MonoBehaviour
         }
 
         Camera.main.transform.position = endPos;
+
         if (b)
-            infoPanel.TurnOn(hitObject.name);
+            infoPanel.TurnOn(clickedObject.name);
         else
+        {
             infoPanel.TurnOffObject();
+            clickedObject = null;
+        }
         //hitObject.GetComponent<Outline>().TurnOn();
     }
 }
