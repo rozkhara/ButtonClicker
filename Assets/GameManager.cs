@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -132,7 +133,32 @@ public class GameManager : MonoBehaviour
         Score += auto_sum.increment;
     }
 
+    public static GameData data = new GameData();
 
+    public static void LoadGameData()
+    {
+        string fileName = Application.persistentDataPath + "/GameData.json";
+
+        if (File.Exists(fileName))
+        {
+            string fromJsonData = File.ReadAllText(fileName);
+            data = JsonUtility.FromJson<GameData>(fromJsonData);
+        }
+    }
+    public static void SaveGameData()
+    {
+        string fileName = Application.persistentDataPath + "/GameData.json";
+        string toJsonData = JsonUtility.ToJson(data, true);
+
+        File.WriteAllText(fileName, toJsonData);
+    }
+
+}
+
+[Serializable]
+public class GameData
+{
+    public int money;
 }
 
 public class Store : ISubject
