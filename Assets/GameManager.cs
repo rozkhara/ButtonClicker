@@ -12,17 +12,17 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static long Score { get; private set; }
 
-    public store store = new store();
+    public Store store = new Store();
 
-    public era ancient = new era();
-    public era steam = new era();
-    public era modern = new era();
-    public era electronic = new era();
-    public era future = new era();
+    public Era ancient = new Era();
+    public Era steam = new Era();
+    public Era modern = new Era();
+    public Era electronic = new Era();
+    public Era future = new Era();
 
     public TouchManager touchManager;
 
-    public static List<automata> automata_list = new List<automata>();
+    public static List<Automata> automata_list = new List<Automata>();
     public static GameManager Instance
     {
         get
@@ -44,15 +44,15 @@ public class GameManager : MonoBehaviour
 
         Score = 0;
 
-        automata hand = new automata(ancient,1,1);
-        automata spring = new automata(ancient, 5,5);
-        automata waterwheel = new automata(ancient, 10,10);
-        automata windmill = new automata(ancient, 15,15);
-        automata hamster = new automata(ancient, 20,20);
+        Automata hand = new Automata(ancient,1,1);
+        Automata spring = new Automata(ancient, 5,5);
+        Automata waterwheel = new Automata(ancient, 10,10);
+        Automata windmill = new Automata(ancient, 15,15);
+        Automata hamster = new Automata(ancient, 20,20);
 
-        automata steam1 = new automata(steam, 30,30);
-        automata steam2 = new automata(steam, 40, 40);
-        automata steam3 = new automata(steam, 50, 50);
+        Automata steam1 = new Automata(steam, 30,30);
+        Automata steam2 = new Automata(steam, 40, 40);
+        Automata steam3 = new Automata(steam, 50, 50);
 
         automata_list.Add(hand);
         automata_list.Add(spring);
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         automata_list.Add(steam2);
         automata_list.Add(steam3);
 
-        auto_sum auto_sum = new auto_sum();
+        Auto_sum auto_sum = new Auto_sum();
 
         store.AddObserver(hand);
         store.AddObserver(spring);
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 
-    IEnumerator Fauto_sum(auto_sum auto_sum)
+    IEnumerator Fauto_sum(Auto_sum auto_sum)
     {
         yield return new WaitForSecondsRealtime(1);
         Score += auto_sum.increment;
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
 }
 
-public class store : ISubject
+public class Store : ISubject
 {
     public List<IObserver> observer_list = new List<IObserver>();
 
@@ -157,7 +157,7 @@ public class store : ISubject
     }
 
 
-    public void BuyAutomata(automata automata)
+    public void BuyAutomata(Automata automata)
     {
         if (GameManager.Score >= automata.price)
         {
@@ -172,7 +172,7 @@ public class store : ISubject
         }
     }
 
-    public void Buy_10Automata(automata automata)
+    public void Buy_10Automata(Automata automata)
     {
         if (GameManager.Score >= automata.price * 10)
         {
@@ -186,7 +186,7 @@ public class store : ISubject
         }
     }
 
-    public void Buyeff(era effobject)
+    public void Buyeff(Era effobject)
     {
         if (GameManager.Score >= effobject.price * 10)
         {
@@ -202,7 +202,7 @@ public class store : ISubject
 
 }
 
-public class era : ISubject, IObserver
+public class Era : ISubject, IObserver
 {
     public List<IObserver> observer_list = new List<IObserver>();
     public int phase { get; private set; } = 0;
@@ -241,10 +241,10 @@ public class era : ISubject, IObserver
     }
 }
 
-public class automata : ISubject, IObserver
+public class Automata : ISubject, IObserver
 {
     //int id;
-    era tag;
+    Era tag;
     public int price { get; private set; }
     int default_production;
     int sol_production;
@@ -252,7 +252,7 @@ public class automata : ISubject, IObserver
     public int quantity { get; private set; } = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
-    public automata(era tag, int pricein, int sol)
+    public Automata(Era tag, int pricein, int sol)
     {
         this.tag = tag;
         price = pricein;
@@ -294,13 +294,13 @@ public class automata : ISubject, IObserver
 
 }
 
-public class auto_sum : IObserver
+public class Auto_sum : IObserver
 {
-    public List<automata> automatas = new List<automata>();
+    public List<Automata> automatas = new List<Automata>();
     public long increment { get; private set; }
     public void subject_alert()
     {
-        foreach(automata automata in automatas)
+        foreach(Automata automata in automatas)
         {
             increment += automata.all_production;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuyButtonUI : MonoBehaviour
 {
-    public static automata target;
+    public static Automata target;
     public GameObject buybutton;
 
     public void onclick()

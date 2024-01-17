@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeButtonUI : MonoBehaviour
 {
-    public era target;
+    public Era target;
     public GameObject upgradebutton;
 
     public void onclick()
