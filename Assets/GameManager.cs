@@ -130,12 +130,11 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameData data = new GameData();
+    public static string fileName;
 
     public static void LoadGameData()
     {
-        string fileName = Application.persistentDataPath + "/GameData.json";
-
-        if (File.Exists(fileName))
+        if (CheckGameData())
         {
             string fromJsonData = File.ReadAllText(fileName);
             data = JsonUtility.FromJson<GameData>(fromJsonData);
@@ -143,12 +142,17 @@ public class GameManager : MonoBehaviour
     }
     public static void SaveGameData()
     {
-        string fileName = Application.persistentDataPath + "/GameData.json";
+        fileName = Application.persistentDataPath + "/GameData.json";
         string toJsonData = JsonUtility.ToJson(data, true);
 
         File.WriteAllText(fileName, toJsonData);
     }
 
+    public static bool CheckGameData()
+    {
+        fileName = Application.persistentDataPath + "/GameData.json";
+        return File.Exists(fileName);
+    }
 }
 
 [Serializable]
