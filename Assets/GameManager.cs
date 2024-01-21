@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public TouchManager touchManager;
 
-    public static List<Automata> automata_list = new List<Automata>();
+    public List<Automata> automata_list = new List<Automata>();
     public static GameManager Instance
     {
         get
@@ -41,18 +41,18 @@ public class GameManager : MonoBehaviour
 
         Score = 0;
 
-        Automata hand = new Automata(ancient,1,1);
-        Automata spring = new Automata(ancient, 5,5);
-        Automata waterwheel = new Automata(ancient, 10,10);
-        Automata windmill = new Automata(ancient, 15,15);
-        Automata hamster = new Automata(ancient, 20,20);
+        Automata hand = new Automata(101,ancient,1,1);
+        Automata arm = new Automata(201,ancient,5,5);
+        Automata waterwheel = new Automata(202,ancient, 10,10);
+        Automata windmill = new Automata(203,ancient, 15,15);
+        Automata hamster = new Automata(204,ancient, 20,20);
 
-        Automata steam1 = new Automata(steam, 30,30);
-        Automata steam2 = new Automata(steam, 40, 40);
-        Automata steam3 = new Automata(steam, 50, 50);
+        Automata steam1 = new Automata(301,steam, 30,30);
+        Automata steam2 = new Automata(302,steam, 40, 40);
+        Automata steam3 = new Automata(303,steam, 50, 50);
 
         automata_list.Add(hand);
-        automata_list.Add(spring);
+        automata_list.Add(arm);
         automata_list.Add(waterwheel);
         automata_list.Add(windmill);
         automata_list.Add(hamster);
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         Auto_sum auto_sum = new Auto_sum();
 
         store.AddObserver(hand);
-        store.AddObserver(spring);
+        store.AddObserver(arm);
         store.AddObserver(waterwheel);
         store.AddObserver(windmill);
         store.AddObserver(hamster);
@@ -72,13 +72,13 @@ public class GameManager : MonoBehaviour
         store.AddObserver(steam3);
 
         ancient.AddObserver(hand);
-        ancient.AddObserver(spring);
+        ancient.AddObserver(arm);
         ancient.AddObserver(waterwheel);
         ancient.AddObserver(windmill);
         ancient.AddObserver(hamster);
 
         hand.AddObserver(auto_sum);
-        spring.AddObserver(auto_sum);
+        arm.AddObserver(auto_sum);
         waterwheel.AddObserver(auto_sum);
         windmill.AddObserver(auto_sum);
         hamster.AddObserver(auto_sum);
@@ -269,7 +269,7 @@ public class Era : ISubject, IObserver
 
 public class Automata : ISubject, IObserver
 {
-    //int id;
+    public int id { get; private set; }
     Era tag;
     public int price { get; private set; }
     int default_production;
@@ -278,8 +278,9 @@ public class Automata : ISubject, IObserver
     public int quantity { get; private set; } = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
-    public Automata(Era tag, int pricein, int sol)
+    public Automata(int id,Era tag, int pricein, int sol)
     {
+        this.id = id;
         this.tag = tag;
         price = pricein;
         default_production = sol;
