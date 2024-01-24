@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class StoreButtonUI : MonoBehaviour
 {
-    public bool isopen = true;
+    private bool isopen = true;
     public GameObject storebutton;
     public GameObject storeview;
     public GameObject buybutton;
