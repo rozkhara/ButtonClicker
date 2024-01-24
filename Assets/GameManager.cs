@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -92,6 +93,28 @@ public class GameManager : MonoBehaviour
         Fauto_sum(auto_sum);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log(Application.persistentDataPath);
+            SaveGameData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            LoadAssetData();
+            PrintDict(assetLocation);
+        }
+    }
+    public static void PrintDict<K, V>(Dictionary<K, V> dict)
+    {
+        foreach (KeyValuePair<K, V> entry in dict)
+        {
+            Debug.Log("Key: " + entry.Key + ", Value: " + entry.Value);
+        }
+    }
+
     /// <summary>
     /// Changes the score with the given operator accordingly.
     /// Score is updated with Score = Score (operator) value.<br/>
@@ -131,6 +154,7 @@ public class GameManager : MonoBehaviour
 
     public static GameData data = new GameData();
     public static string fileName;
+    public static Dictionary<int, Vector3> assetLocation;
 
     public static void LoadGameData()
     {
@@ -153,12 +177,20 @@ public class GameManager : MonoBehaviour
         fileName = Application.persistentDataPath + "/GameData.json";
         return File.Exists(fileName);
     }
+    public static void LoadAssetData()
+    {
+        fileName = Application.dataPath + "/AssetData.json";
+        string fromJsonData = File.ReadAllText(fileName);
+
+        assetLocation = JsonConvert.DeserializeObject<Dictionary<int, Vector3>>(fromJsonData);
+    }
 }
 
 [Serializable]
 public class GameData
 {
     public int money;
+    public Vector3 a = Vector3.one;
 }
 
 public class Store : ISubject
