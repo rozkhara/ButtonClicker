@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         Score = 0;
 
         Automata hand = new Automata(101,ancient,1,1);
-        Automata arm = new Automata(201,ancient,5,5);
+        Automata punch = new Automata(201,ancient,5,5);
         Automata waterwheel = new Automata(202,ancient, 10,10);
         Automata windmill = new Automata(203,ancient, 15,15);
         Automata hamster = new Automata(204,ancient, 20,20);
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         Automata steam3 = new Automata(303,steam, 50, 50);
 
         automata_list.Add(hand);
-        automata_list.Add(arm);
+        automata_list.Add(punch);
         automata_list.Add(waterwheel);
         automata_list.Add(windmill);
         automata_list.Add(hamster);
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         Auto_sum auto_sum = new Auto_sum();
 
         store.AddObserver(hand);
-        store.AddObserver(arm);
+        store.AddObserver(punch);
         store.AddObserver(waterwheel);
         store.AddObserver(windmill);
         store.AddObserver(hamster);
@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviour
         store.AddObserver(steam3);
 
         ancient.AddObserver(hand);
-        ancient.AddObserver(arm);
+        ancient.AddObserver(punch);
         ancient.AddObserver(waterwheel);
         ancient.AddObserver(windmill);
         ancient.AddObserver(hamster);
 
         hand.AddObserver(auto_sum);
-        arm.AddObserver(auto_sum);
+        punch.AddObserver(auto_sum);
         waterwheel.AddObserver(auto_sum);
         windmill.AddObserver(auto_sum);
         hamster.AddObserver(auto_sum);
