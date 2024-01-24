@@ -425,54 +425,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae959fc4ef931eb4fb9dd395ad9e7c30, type: 3}
---- !u!1 &659145438
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 659145440}
-  - component: {fileID: 659145439}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &659145439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659145438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae878f3055da524b851200cd22f471f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainBgmAudioClip: {fileID: 0}
-  sfxAudioClips:
-  - {fileID: 8300000, guid: 07d38dd6b7a93cc44ba43a5fa4ba60a3, type: 3}
-  - {fileID: 8300000, guid: 7c5897c8f7559274788a734e5ce304a5, type: 3}
---- !u!4 &659145440
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659145438}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &898493568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3371339762375243308, guid: 959afb5cb41920d4fbac2eeef8978523, type: 3}
@@ -849,7 +801,7 @@ Transform:
   m_GameObject: {fileID: 1346695264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.00006353855, y: 1.1063852, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1827,4 +1779,3 @@ SceneRoots:
   - {fileID: 1911711816}
   - {fileID: 1781530431}
   - {fileID: 1346695265}
-  - {fileID: 659145440}

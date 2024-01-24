@@ -12,6 +12,6 @@ public class BuyButtonUI : MonoBehaviour
     {
         GameManager.Instance.store.BuyAutomata(target);
         Debug.Log("Buyed");
-        Debug.Log(GameManager.Instance.automata_list[0].quantity);
+        Debug.Log(GameManager.automata_list[0].quantity);
     }
 }
