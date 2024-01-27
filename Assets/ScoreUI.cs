@@ -15,6 +15,6 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Score:" + GameManager.Score;
+        score.text = GameManager.Score.ToString() ;
     }
 }
