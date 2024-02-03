@@ -184,6 +184,13 @@ public class GameManager : MonoBehaviour
 
         assetLocation = JsonConvert.DeserializeObject<Dictionary<int, Vector3>>(fromJsonData);
     }
+
+    /*public void InstantiateAutomata(Automata automata)
+    {
+        GameObject gameAutomata;
+
+        Instantiate(gameAutomata, assetLocation[automata.id], Quaternion.identity);
+    }*/
 }
 
 [Serializable]
@@ -213,7 +220,6 @@ public class Store : ISubject
             observer.subject_alert();
         }
     }
-
 
     public void BuyAutomata(Automata automata)
     {
