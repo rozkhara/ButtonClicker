@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmPlayer;
     private AudioSource sfxPlayer;
 
+    private float masterVolume = 1f;
     private float masterVolumeSFX = 1f;
     private float masterVolumeBGM = 1f;
 
@@ -72,7 +73,7 @@ public class SoundManager : MonoBehaviour
         {
             return;
         }
-        sfxPlayer.PlayOneShot(sfxAudioClipsDic[name], volume * masterVolumeSFX);
+        sfxPlayer.PlayOneShot(sfxAudioClipsDic[name], volume * masterVolumeSFX * masterVolume);
     }
 
     // BGM 재생 : 볼륨을 선택적 매개변수로 지정
@@ -81,7 +82,7 @@ public class SoundManager : MonoBehaviour
         volumeBGM = volume;
 
         bgmPlayer.loop = true; // BGM 사운드이므로 루프로 설정
-        bgmPlayer.volume = volume * masterVolumeBGM;
+        bgmPlayer.volume = volume * masterVolumeBGM * masterVolume ;
 
         bgmPlayer.clip = mainBgmAudioClip;
         bgmPlayer.Play();
@@ -108,11 +109,27 @@ public class SoundManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         masterVolumeBGM = volume;
-        bgmPlayer.volume = volumeBGM * masterVolumeBGM;
+        bgmPlayer.volume = volumeBGM * masterVolumeBGM * masterVolume ;
     }
 
     public float GetBGMVolume()
     {
         return masterVolumeBGM;
     }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = volume; 
+    }
+
+    public float GetMasterVolume()
+    {
+        return masterVolume; 
+    }
+
+
+
+
+
+
 }
