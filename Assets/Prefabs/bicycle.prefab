@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bicycle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca6cf8131dec68949ae4c3bbd4dd760a, type: 3}
+      propertyPath: m_TagString
+      value: Automata
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -62,6 +66,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca6cf8131dec68949ae4c3bbd4dd760a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 826114581753154612}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca6cf8131dec68949ae4c3bbd4dd760a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5039537207174127183}
   m_SourcePrefab: {fileID: 100100000, guid: ca6cf8131dec68949ae4c3bbd4dd760a, type: 3}
 --- !u!1 &6819565911639163137 stripped
 GameObject:
@@ -102,3 +109,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+--- !u!114 &-5039537207174127183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819565911639163137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bab7bc26cbdc0449a12e81538de65c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automata_data:
+    id: 0
+    price: 0
+    default_production: 0
+    name: 

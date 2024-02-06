@@ -1,27 +1,6 @@
-{
-    101 : {
-      "x": -7.35,
-      "y": 0.11,
-      "z": -2.61
-    },
-    201 : {
-      "x": 6.84,
-      "y": -1.01,
-      "z": 1.24
-    },
-    202 : {
-      "x": 3.43,
-      "y": -0.05,
-      "z": 2.21
-    },
-    203 : {
-      "x": -1.49,
-      "y": 0.0,
-      "z": 2.32
-    },
-    204 : {
-      "x": -5.78,
-      "y": 0.05,
-      "z": 2.3
-    }
-}
+[
+  { "default_production": 1, "id": 101, "price": 2, "name": "hand" },
+  { "default_production": 2, "id": 201, "price": 3, "name": "punch" },
+  { "default_production": 3, "id": 202, "price": 4, "name": "hand" },
+  { "default_production": 4, "id": 301, "price": 5, "name": "hand" }
+]

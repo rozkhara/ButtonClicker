@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: punch
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
+      propertyPath: m_TagString
+      value: Automata
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6102186945273463661}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7989727859468979413}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3557338061451484243}
@@ -143,3 +150,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+--- !u!114 &7989727859468979413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107599535188356448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bab7bc26cbdc0449a12e81538de65c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automata_data:
+    id: 201
+    price: 3
+    default_production: 2
+    name: punch

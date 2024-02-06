@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: waterwheel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 975fd699872523b44859ed2b0a85d274, type: 3}
+      propertyPath: m_TagString
+      value: Automata
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 975fd699872523b44859ed2b0a85d274, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8325397300715705463}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 975fd699872523b44859ed2b0a85d274, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7234738722735227886}
   m_SourcePrefab: {fileID: 100100000, guid: 975fd699872523b44859ed2b0a85d274, type: 3}
 --- !u!1 &6562305156521221253 stripped
 GameObject:
@@ -114,3 +121,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+--- !u!114 &7234738722735227886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562305156521221253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bab7bc26cbdc0449a12e81538de65c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automata_data:
+    id: 301
+    price: 5
+    default_production: 4
+    name: hand

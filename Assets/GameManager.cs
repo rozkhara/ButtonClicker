@@ -1,9 +1,11 @@
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
+using System.Net;
+using UnityEditor.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,16 +13,14 @@ public class GameManager : MonoBehaviour
     public static long Score { get; private set; }
 
     public Store store = new Store();
-
-    public Era ancient = new Era();
-    public Era steam = new Era();
-    public Era modern = new Era();
-    public Era electronic = new Era();
-    public Era future = new Era();
-
+    public Auto_sum auto_sum = new Auto_sum();
     public TouchManager touchManager;
+    public PanelManager panelManager;
 
     public List<Automata> automata_list = new List<Automata>();
+    public List<GameObject> prefabs = new List<GameObject>();
+
+    public int nowIndex = 0;
     public static GameManager Instance
     {
         get
@@ -40,73 +40,15 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        //Save();
+        LoadAssetData();
+        LoadGameData();
         Score = 0;
 
-        Automata hand = new Automata(101,ancient,1,1);
-        Automata punch = new Automata(201,ancient,5,5);
-        Automata waterwheel = new Automata(202,ancient, 10,10);
-        Automata windmill = new Automata(203,ancient, 15,15);
-        Automata hamster = new Automata(204,ancient, 20,20);
-
-        Automata steam1 = new Automata(301,steam, 30,30);
-        Automata steam2 = new Automata(302,steam, 40, 40);
-        Automata steam3 = new Automata(303,steam, 50, 50);
-
-        automata_list.Add(hand);
-        automata_list.Add(punch);
-        automata_list.Add(waterwheel);
-        automata_list.Add(windmill);
-        automata_list.Add(hamster);
-        automata_list.Add(steam1);
-        automata_list.Add(steam2);
-        automata_list.Add(steam3);
-
-        Auto_sum auto_sum = new Auto_sum();
-
-        store.AddObserver(hand);
-        store.AddObserver(punch);
-        store.AddObserver(waterwheel);
-        store.AddObserver(windmill);
-        store.AddObserver(hamster);
-        store.AddObserver(steam1);
-        store.AddObserver(steam2);
-        store.AddObserver(steam3);
-
-        ancient.AddObserver(hand);
-        ancient.AddObserver(punch);
-        ancient.AddObserver(waterwheel);
-        ancient.AddObserver(windmill);
-        ancient.AddObserver(hamster);
-
-        hand.AddObserver(auto_sum);
-        punch.AddObserver(auto_sum);
-        waterwheel.AddObserver(auto_sum);
-        windmill.AddObserver(auto_sum);
-        hamster.AddObserver(auto_sum);
-        steam1.AddObserver(auto_sum);
-        steam2.AddObserver(auto_sum);
-        steam3.AddObserver(auto_sum);
-
-
-        auto_sum.automatas = automata_list;
 
         Fauto_sum(auto_sum);
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log(Application.persistentDataPath);
-            SaveGameData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            LoadAssetData();
-            PrintDict(assetLocation);
-        }
-    }
     public static void PrintDict<K, V>(Dictionary<K, V> dict)
     {
         foreach (KeyValuePair<K, V> entry in dict)
@@ -136,7 +78,7 @@ public class GameManager : MonoBehaviour
                 "*" => Score * value,
                 _ => throw new Exception()
             };
-            
+
         }
         catch (DivideByZeroException)
         {
@@ -146,17 +88,23 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 
+    public void InstantiateAutomata(int index)
+    {
+        Instantiate(prefabs[index]);
+        nowIndex++;
+        panelManager.InstantiatePanel(nowIndex);
+    }
     IEnumerator Fauto_sum(Auto_sum auto_sum)
     {
         yield return new WaitForSecondsRealtime(1);
         Score += auto_sum.increment;
     }
 
-    public static GameData data = new GameData();
-    public static string fileName;
-    public static Dictionary<int, Vector3> assetLocation;
+    public GameData data = new GameData();
+    public string fileName;
+    public List<AutomataData> automataDataJson;
 
-    public static void LoadGameData()
+    public void LoadGameData()
     {
         if (CheckGameData())
         {
@@ -164,7 +112,7 @@ public class GameManager : MonoBehaviour
             data = JsonUtility.FromJson<GameData>(fromJsonData);
         }
     }
-    public static void SaveGameData()
+    public void SaveGameData()
     {
         fileName = Application.persistentDataPath + "/GameData.json";
         string toJsonData = JsonUtility.ToJson(data, true);
@@ -172,17 +120,55 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(fileName, toJsonData);
     }
 
-    public static bool CheckGameData()
+    public bool CheckGameData()
     {
         fileName = Application.persistentDataPath + "/GameData.json";
         return File.Exists(fileName);
     }
-    public static void LoadAssetData()
+
+    /*public void Save()
+    {
+        fileName = Application.dataPath + "/AssetData.json";
+        Debug.Log(fileName);
+
+        List<AutomataData> gamedata = new List<AutomataData>();
+
+        foreach (GameObject ob in prefabs)
+        {
+            Debug.Log(ob.name);
+            Debug.Log(ob.GetComponent<Automata>().automata_data.id);
+            gamedata.Add(ob.GetComponent<Automata>().automata_data);
+        }
+
+        foreach (AutomataData automatadata in gamedata)
+        {
+            Debug.Log(automatadata.id);
+        }
+        string toJsonData = JsonConvert.SerializeObject(gamedata,);
+
+
+        Debug.Log(toJsonData);
+        File.WriteAllText(fileName, toJsonData);
+    }*/
+    public void LoadAssetData()
     {
         fileName = Application.dataPath + "/AssetData.json";
         string fromJsonData = File.ReadAllText(fileName);
 
-        assetLocation = JsonConvert.DeserializeObject<Dictionary<int, Vector3>>(fromJsonData);
+        automataDataJson = JsonConvert.DeserializeObject<List<AutomataData>>(fromJsonData);
+
+        for (int i = 0; i < automataDataJson.Count; i++)
+        {
+            //prefabs[i].GetComponent<Automata>().automata_data = automataDataJson[i];
+            Automata auto = prefabs[i].GetComponent<Automata>();
+            //Debug.Log(auto_sum);
+            if (auto != null)
+            {
+                auto.SetAutomataData(automataDataJson[i], auto_sum);
+                Debug.Log(auto.automata_data.id);
+            }
+            store.AddObserver(prefabs[i].GetComponent<Automata>());
+        }
     }
 
     /*public void InstantiateAutomata(Automata automata)
@@ -198,6 +184,7 @@ public class GameData
 {
     public int money;
     public Vector3 a = Vector3.one;
+
 }
 
 public class Store : ISubject
@@ -221,14 +208,17 @@ public class Store : ISubject
         }
     }
 
-    public void BuyAutomata(Automata automata)
+    public void BuyAutomata(int index)
     {
-        if (GameManager.Score >= automata.price)
+        Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
+        if (GameManager.Score >= automata.automata_data.price)
         {
-            GameManager.Instance.SetScore(automata.price, "-");
+            GameManager.Instance.SetScore(automata.automata_data.price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
             Debug.Log("BuyAutomata");
+            GameManager.Instance.InstantiateAutomata(index);
+
         }
         else
         {
@@ -238,9 +228,9 @@ public class Store : ISubject
 
     public void Buy_10Automata(Automata automata)
     {
-        if (GameManager.Score >= automata.price * 10)
+        if (GameManager.Score >= automata.automata_data.price * 10)
         {
-            GameManager.Instance.SetScore(automata.price * 10, "-");
+            GameManager.Instance.SetScore(automata.automata_data.price * 10, "-");
             automata.SetAutomata(10, "+");
             NotifyObserver();
         }
@@ -250,124 +240,19 @@ public class Store : ISubject
         }
     }
 
-    public void Buyeff(Era effobject)
-    {
-        if (GameManager.Score >= effobject.price * 10)
-        {
-            GameManager.Instance.SetScore(effobject.price, "-");
-            effobject.SetPhase(1, "+");
-            NotifyObserver();
-        }
-        else
-        {
-
-        }
-    }
 
 }
 
-public class Era : ISubject, IObserver
-{
-    public List<IObserver> observer_list = new List<IObserver>();
-    public int phase { get; private set; } = 0;
-    public double efficiency { get; private set; } = 1;
-    public int price { get; private set; }
 
-    public void subject_alert()
-    {
-        NotifyObserver();
-    }
-
-    public void AddObserver(IObserver observer)
-    {
-        observer_list.Add(observer);
-    }
-    public void RemoveObserver(IObserver observer)
-    {
-        observer_list.Remove(observer);
-    }
-    public void NotifyObserver()
-    {
-        foreach (IObserver observer in observer_list)
-        {
-            observer.subject_alert();
-        }
-    }
-    public long SetPhase(int value, string @operator = "+")
-    {
-        phase = @operator switch
-        {
-            "+" => phase + value,
-            "-" => phase - value,
-            _ => throw new Exception()
-        };
-        return phase;
-    }
-}
-
-public class Automata : ISubject, IObserver
-{
-    public int id { get; private set; }
-    Era tag;
-    public int price { get; private set; }
-    int default_production;
-    int sol_production;
-    public int all_production { get; private set; } = 0;
-    public int quantity { get; private set; } = 0;
-    public List<IObserver> observer_list = new List<IObserver>();
-
-    public Automata(int id,Era tag, int pricein, int sol)
-    {
-        this.id = id;
-        this.tag = tag;
-        price = pricein;
-        default_production = sol;
-    }
-    public void subject_alert()
-    {
-        sol_production = (int)(default_production * tag.efficiency);
-        all_production = sol_production * quantity;
-        NotifyObserver();
-    }
-
-    public void AddObserver(IObserver observer)
-    {
-        observer_list.Add(observer);
-    }
-    public void RemoveObserver(IObserver observer)
-    {
-        observer_list.Remove(observer);
-    }
-    public void NotifyObserver()
-    {
-        foreach (IObserver observer in observer_list)
-        {
-            observer.subject_alert();
-        }
-    }
-
-    public long SetAutomata(int value, string @operator = "+")
-    {
-        quantity = @operator switch
-        {
-            "+" => quantity + value,
-            "-" => quantity - value,
-            _ => throw new Exception()
-        };
-        return quantity;
-    }
-
-}
 
 public class Auto_sum : IObserver
 {
-    public List<Automata> automatas = new List<Automata>();
     public long increment { get; private set; }
     public void subject_alert()
     {
-        foreach(Automata automata in automatas)
+        foreach (GameObject automata in GameManager.Instance.prefabs)
         {
-            increment += automata.all_production;
+            increment += automata.GetComponent<Automata>().all_production;
         }
     }
 }

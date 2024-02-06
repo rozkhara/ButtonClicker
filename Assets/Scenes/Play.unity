@@ -631,16 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelprefab: {fileID: 1303541045253095538, guid: 5e641623b38e7f5408314a6a75d31833, type: 3}
   storeContent: {fileID: 0}
-  hand_title: hand
-  punch_title: punch
-  waterwheel_title: waterwheel
-  windmill_title: windmill
-  hamster_title: hamster
-  hand_exp: 101
-  punch_exp: 201
-  waterwheel_exp: 202
-  windmill_exp: 203
-  hamster_exp: 204
 --- !u!1 &580408754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d5e014e223cb447b09c9df9909ed64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradebutton: {fileID: 0}
 --- !u!1 &1132719473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,6 +2420,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchManager: {fileID: 0}
+  panelManager: {fileID: 453666777}
+  automata_list: []
+  prefabs:
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 7107599535188356448, guid: c1b2239b501193448bc1de353d79015a, type: 3}
+  - {fileID: 7111106080965219514, guid: cecc9f5a95589f04e88675a471970c87, type: 3}
+  - {fileID: 6562305156521221253, guid: 9bbe895b6b0935d428ffafda2f7ee952, type: 3}
+  nowIndex: 0
+  data:
+    money: 0
+    a: {x: 1, y: 1, z: 1}
+  fileName: 
+  automataDataJson: []
 --- !u!4 &1316470841
 Transform:
   m_ObjectHideFlags: 0

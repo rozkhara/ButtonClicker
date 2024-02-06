@@ -1801,9 +1801,10 @@ GameObject:
   - component: {fileID: 6117847845008936163}
   - component: {fileID: 6525774360466699429}
   - component: {fileID: 5497795667334350841}
+  - component: {fileID: 2690201126816311648}
   m_Layer: 0
   m_Name: hand
-  m_TagString: Untagged
+  m_TagString: Automata
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1890,6 +1891,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 1
+--- !u!114 &2690201126816311648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144044684161005396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bab7bc26cbdc0449a12e81538de65c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automata_data:
+    id: 101
+    price: 2
+    default_production: 1
+    name: hand
 --- !u!1 &5325012890362315162
 GameObject:
   m_ObjectHideFlags: 0
