@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         //Save();
         LoadAssetData();
-        LoadGameData();
+        //LoadGameData();
         Score = 0;
 
 
@@ -90,10 +90,14 @@ public class GameManager : MonoBehaviour
 
     public void InstantiateAutomata(int index)
     {
-        Instantiate(prefabs[index]);
+        AutomataData automataData = prefabs[index].GetComponent<Automata>().automata_data;
+        GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x,automataData.position_y,automataData.position_z),Quaternion.Euler(0.0f,automataData.rotation_y,0.0f));
+        nowObject.transform.localScale = Vector3.one * automataData.scale;
+
         nowIndex++;
         panelManager.InstantiatePanel(nowIndex);
     }
+
     IEnumerator Fauto_sum(Auto_sum auto_sum)
     {
         yield return new WaitForSecondsRealtime(1);
@@ -183,8 +187,7 @@ public class GameManager : MonoBehaviour
 public class GameData
 {
     public int money;
-    public Vector3 a = Vector3.one;
-
+    public int automataIndex;
 }
 
 
