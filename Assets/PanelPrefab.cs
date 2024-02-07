@@ -9,14 +9,14 @@ public class PanelPrefab : MonoBehaviour
 {
 
     public int automata_id;
-    string str;
+    string assetRoute;
 
 
     public void SetPanelPrefab(int index) 
     {
         automata_id = index;
-        str = "Image/" + GameManager.Instance.prefabs[automata_id].GetComponent<Automata>().automata_data.name;
-        transform.GetChild(0).GetComponent<RawImage>().texture = Resources.Load<Texture>(str);
+        assetRoute = "Image/" + GameManager.Instance.prefabs[automata_id].GetComponent<Automata>().automata_data.name;
+        transform.GetChild(0).GetComponent<RawImage>().texture = Resources.Load<Texture>(assetRoute);
         transform.GetChild(1).GetComponent<TMP_Text>().text = GameManager.Instance.prefabs[automata_id].GetComponent<Automata>().automata_data.name;
         transform.GetChild(2).GetComponent<TMP_Text>().text = GameManager.Instance.prefabs[automata_id].GetComponent<Automata>().automata_data.id.ToString();
     }
