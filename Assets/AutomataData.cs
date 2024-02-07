@@ -11,6 +11,15 @@ public class AutomataData
     public int default_production = 0;
     public string name = "";
 
-    //public Vector3 position;
-    //public Vector3 camera_position;
+    public float position_x;
+    public float position_y;
+    public float position_z;
+    
+    public float camera_position_x;
+    public float camera_position_y;
+    public float camera_position_z;
+
+    public float rotation_y;
+
+    public float scale;
 }

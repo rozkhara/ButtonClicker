@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 742159767}
   - component: {fileID: 742159766}
   - component: {fileID: 742159770}
+  - component: {fileID: 742159771}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Automata
@@ -428,6 +429,31 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &742159771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742159765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bab7bc26cbdc0449a12e81538de65c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automata_data:
+    id: 0
+    price: 0
+    default_production: 0
+    name: 
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    camera_position_x: 0
+    camera_position_y: 0
+    camera_position_z: 0
+    rotation_y: 0
+    scale: 0
 --- !u!1 &779148301
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +693,6 @@ GameObject:
   - component: {fileID: 1089153378}
   - component: {fileID: 1089153377}
   - component: {fileID: 1089153376}
-  - component: {fileID: 1089153379}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -749,18 +774,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1089153379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089153375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34326710992a5c74db6d6acf80447e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1568566843
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +922,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchManager: {fileID: 699003867}
+  panelManager: {fileID: 0}
+  automata_list: []
+  prefabs:
+  - {fileID: 742159765}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  - {fileID: 5144044684161005396, guid: 2b5cb14c923f7cc4092ba3160f0d9857, type: 3}
+  nowIndex: 0
+  data:
+    money: 0
+    automataIndex: 0
+  fileName: 
+  automataDataJson: []
 --- !u!4 &1638568584
 Transform:
   m_ObjectHideFlags: 0
