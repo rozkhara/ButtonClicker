@@ -64,7 +64,9 @@ public class TouchManager : MonoBehaviour
         if (b)
         {
             clickedObject = hitObject;
-            endPos = clickedObject.transform.position - 5f * Vector3.forward;
+            //endPos = clickedObject.transform.position - 5f * Vector3.forward;
+            AutomataData clicked = clickedObject.GetComponent<Automata>().automata_data;
+            endPos = new Vector3(clicked.camera_position_x, clicked.camera_position_y, clicked.camera_position_z);
         }
         nowCameraLerpCorotuine = LerpCamera(startPos, endPos, b);
         StartCoroutine(nowCameraLerpCorotuine);
