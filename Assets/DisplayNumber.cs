@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisplayNumber : MonoBehaviour
 {
-    char[] englishNum = new char[4]{ 'K', 'M', 'B', 'T' };
+    char[] englishNum = new char[30] { 'K', 'M', 'B', 'T', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
     public string EnglishNumber(int number)
     {
         int cnt = -1;
@@ -14,6 +14,8 @@ public class DisplayNumber : MonoBehaviour
         {
             number /= 1000;
             cnt++;
+            if (cnt >= 30)
+                break;
         }
 
         str = number.ToString();
