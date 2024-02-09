@@ -56,6 +56,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(AppearDesk());
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SaveGameData();
+        }
     }
     public static void PrintDict<K, V>(Dictionary<K, V> dict)
     {
@@ -122,10 +127,28 @@ public class GameManager : MonoBehaviour
         {
             string fromJsonData = File.ReadAllText(fileName);
             data = JsonUtility.FromJson<GameData>(fromJsonData);
+
+            Score = data.money;
+            nowIndex = data.automataIndex;
+
+            for (int i = 0; i < nowIndex; i++)
+            {
+                prefabs[i].GetComponent<Automata>().quantity = data.automataLevels[i];
+            }
         }
     }
     public void SaveGameData()
     {
+        data.money = Score;
+        data.automataIndex = nowIndex;
+        List<int> automataLevel = new List<int>();
+
+        for (int i = 0; i < nowIndex; i++)
+        {
+            automataLevel.Add(prefabs[i].GetComponent<Automata>().quantity);
+        }
+        data.automataLevels = automataLevel;
+
         fileName = Application.persistentDataPath + "/GameData.json";
         string toJsonData = JsonUtility.ToJson(data, true);
 
@@ -212,8 +235,9 @@ public class GameManager : MonoBehaviour
 [Serializable]
 public class GameData
 {
-    public int money;
+    public long money;
     public int automataIndex;
+    public List<int> automataLevels;
 }
 
 

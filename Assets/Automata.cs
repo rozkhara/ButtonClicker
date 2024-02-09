@@ -8,7 +8,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     public AutomataData automata_data = new AutomataData();
     int sol_production;
     public int all_production { get; private set; } = 0;
-    public int quantity { get; private set; } = 0;
+    public int quantity = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
     public Automata(AutomataData automataData)
