@@ -35,7 +35,7 @@ public class Info : MonoBehaviour
 
     public void TurnOff()
     {
-        GameManager.Instance.touchManager.LerpCameraAni(Camera.main.transform.position, new Vector3(0f, 8.79f, -8.95f), false);
+        GameManager.Instance.touchManager.LerpCameraAni(Camera.main.transform, new Vector3(0f, 8.79f, -8.95f), new Vector3(33,0,0), false);
         //Camera.main.transform.position = new Vector3(0f, 1f, -10f);
         //GameManager.Instance.touchManager.hitObject?.GetComponent<Outline>().TurnOffOutline();
     }

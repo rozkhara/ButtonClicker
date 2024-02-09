@@ -17,9 +17,11 @@ public class TouchManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log(2);
             if (hitObject != null)
             {
-                LerpCameraAni(Camera.main.transform.position, Vector3.zero, true);
+                Debug.Log(0);
+                LerpCameraAni(Camera.main.transform, Vector3.zero, Vector3.zero, true);
             }
         }
 
@@ -27,10 +29,12 @@ public class TouchManager : MonoBehaviour
 
     void CheckObject()
     {
+        Debug.Log(3);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log(1);
             if (hit.transform.gameObject.tag == "Automata")
             {
                 hitObject = hit.transform.gameObject;
@@ -52,7 +56,7 @@ public class TouchManager : MonoBehaviour
         }
     }
 
-    public void LerpCameraAni(Vector3 startPos, Vector3 endPos, bool b)
+    public void LerpCameraAni(Transform startCameraTransform, Vector3 endPos, Vector3 endRot, bool b)
     {
         if (nowCameraLerpCorotuine != null)
         {
@@ -67,15 +71,19 @@ public class TouchManager : MonoBehaviour
             //endPos = clickedObject.transform.position - 5f * Vector3.forward;
             AutomataData clicked = clickedObject.GetComponent<Automata>().automata_data;
             endPos = new Vector3(clicked.camera_position_x, clicked.camera_position_y, clicked.camera_position_z);
+            endRot = new Vector3(clicked.camera_rotation_x, clicked.camera_rotation_y, 0);
         }
-        nowCameraLerpCorotuine = LerpCamera(startPos, endPos, b);
+        nowCameraLerpCorotuine = LerpCamera(startCameraTransform, endPos, endRot, b);
         StartCoroutine(nowCameraLerpCorotuine);
     }
 
-    public IEnumerator LerpCamera(Vector3 startPos, Vector3 endPos, bool b)
+    public IEnumerator LerpCamera(Transform startCameraTransform, Vector3 endPos, Vector3 endRot, bool b)
     {
         float delta = 0;
         float duration = 2f;
+
+        Vector3 startPos = startCameraTransform.position;
+        Vector3 startRot = startCameraTransform.rotation.eulerAngles;
 
         while (delta <= duration)
         {
@@ -85,12 +93,14 @@ public class TouchManager : MonoBehaviour
             //t = t < 0.5f ? t * t : 1 - (1 - t) * (1 - t);
 
             Camera.main.transform.position = Vector3.Lerp(startPos, endPos, t);
+            Camera.main.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t));
 
             delta += Time.deltaTime;
             yield return null;
         }
 
         Camera.main.transform.position = endPos;
+        Camera.main.transform.rotation = Quaternion.Euler(endRot);
 
         if (b)
             infoPanel.TurnOn(clickedObject.name);
