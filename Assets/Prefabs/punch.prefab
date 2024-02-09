@@ -81,6 +81,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7989727859468979413}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -87477802188664394}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6637389582262691403}
     - targetCorrespondingSourceObject: {fileID: 8416272007918961125, guid: b9a95d71423ad2d4cbc837fc132b158f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3557338061451484243}
@@ -167,3 +173,53 @@ MonoBehaviour:
     price: 3
     default_production: 2
     name: punch
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    camera_position_x: 0
+    camera_position_y: 0
+    camera_position_z: 0
+    rotation_y: 0
+    camera_rotation_x: 0
+    camera_rotation_y: 0
+    scale: 0
+--- !u!114 &-87477802188664394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107599535188356448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!64 &-6637389582262691403
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107599535188356448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
