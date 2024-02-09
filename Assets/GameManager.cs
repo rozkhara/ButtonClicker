@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Auto_sum auto_sum = new Auto_sum();
     public TouchManager touchManager;
     public PanelManager panelManager;
+    public GameObject desk;
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
@@ -49,6 +50,13 @@ public class GameManager : MonoBehaviour
         Fauto_sum(auto_sum);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            StartCoroutine(AppearDesk());
+        }
+    }
     public static void PrintDict<K, V>(Dictionary<K, V> dict)
     {
         foreach (KeyValuePair<K, V> entry in dict)
@@ -181,6 +189,24 @@ public class GameManager : MonoBehaviour
 
         Instantiate(gameAutomata, assetLocation[automata.id], Quaternion.identity);
     }*/
+
+    public IEnumerator AppearDesk()
+    {
+        float delta = 0;
+        float duration = 0.5f;
+        Vector3 deskEndPos = new Vector3(0f, 2.24f, 8.67f);
+        Vector3 deskStartPos = desk.transform.position;
+
+        while (delta <= duration)
+        {
+            float t = delta / duration;
+
+            desk.transform.position = Vector3.Lerp(deskStartPos,deskEndPos, t);
+
+            delta += Time.deltaTime;
+            yield return null;
+        }
+    }
 }
 
 [Serializable]
