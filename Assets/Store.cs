@@ -28,12 +28,14 @@ public class Store : ISubject
         Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
         if (GameManager.Score >= automata.automata_data.price)
         {
+            if (automata.quantity == 0)
+            {
+                GameManager.Instance.InstantiateAutomata(index);
+            }
             GameManager.Instance.SetScore(automata.automata_data.price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
             Debug.Log("BuyAutomata");
-            GameManager.Instance.InstantiateAutomata(index);
-
         }
         else
         {
