@@ -1910,16 +1910,17 @@ MonoBehaviour:
     price: 2
     default_production: 1
     name: hand
-    position_x: 0
-    position_y: 0
-    position_z: 0
-    camera_position_x: 0
-    camera_position_y: 0
-    camera_position_z: 0
-    rotation_y: 0
-    camera_rotation_x: 0
-    camera_rotation_y: 0
-    scale: 0
+    position_x: -7.35
+    position_y: 0.11
+    position_z: -2.61
+    camera_position_x: -8.3
+    camera_position_y: 3.8
+    camera_position_z: -6.4
+    rotation_y: 180
+    camera_rotation_x: 25
+    camera_rotation_y: 37.5
+    scale: 0.3
+  quantity: 0
 --- !u!114 &-2587768261940867186
 MonoBehaviour:
   m_ObjectHideFlags: 0

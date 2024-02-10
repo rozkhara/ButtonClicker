@@ -140,20 +140,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   automata_data:
-    id: 301
-    price: 5
-    default_production: 4
-    name: hand
-    position_x: 0
-    position_y: 0
-    position_z: 0
+    id: 202
+    price: 4
+    default_production: 3
+    name: waterwheel
+    position_x: 3.43
+    position_y: -0.05
+    position_z: 2.21
     camera_position_x: 0
     camera_position_y: 0
     camera_position_z: 0
     rotation_y: 0
-    camera_rotation_x: 0
-    camera_rotation_y: 0
-    scale: 0
+    camera_rotation_x: 25
+    camera_rotation_y: 37.5
+    scale: 0.3
+  quantity: 0
 --- !u!114 &-4852606130326952213
 MonoBehaviour:
   m_ObjectHideFlags: 0

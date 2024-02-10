@@ -173,16 +173,17 @@ MonoBehaviour:
     price: 3
     default_production: 2
     name: punch
-    position_x: 0
-    position_y: 0
-    position_z: 0
+    position_x: 6.84
+    position_y: -1.01
+    position_z: 1.24
     camera_position_x: 0
     camera_position_y: 0
     camera_position_z: 0
     rotation_y: 0
-    camera_rotation_x: 0
-    camera_rotation_y: 0
-    scale: 0
+    camera_rotation_x: 25
+    camera_rotation_y: 37.5
+    scale: 0.22
+  quantity: 0
 --- !u!114 &-87477802188664394
 MonoBehaviour:
   m_ObjectHideFlags: 0
