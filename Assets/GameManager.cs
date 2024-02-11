@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         //Save();
         LoadAssetData();
-        LoadGameData();
+        //LoadGameData();
         Score = 0;
 
 
