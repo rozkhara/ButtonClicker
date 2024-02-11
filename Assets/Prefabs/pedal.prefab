@@ -74,7 +74,7 @@ PrefabInstance:
       addedObject: {fileID: 5683784181931195736}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81bb34c349833604dad192d568f5a315, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7778443315057087726}
+      addedObject: {fileID: 1543458934869531146}
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 81bb34c349833604dad192d568f5a315, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7773915820756786826}
@@ -171,6 +171,7 @@ MonoBehaviour:
     camera_rotation_x: 0
     camera_rotation_y: 0
     scale: 0
+  quantity: 0
 --- !u!114 &5683784181931195736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,8 +190,8 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!64 &7778443315057087726
-MeshCollider:
+--- !u!65 &1543458934869531146
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -207,7 +208,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.5, y: 9, z: 6}
+  m_Center: {x: 0, y: 4.4, z: 0.78}

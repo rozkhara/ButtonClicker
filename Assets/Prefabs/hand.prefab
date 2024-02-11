@@ -1803,7 +1803,7 @@ GameObject:
   - component: {fileID: 5497795667334350841}
   - component: {fileID: 2690201126816311648}
   - component: {fileID: -2587768261940867186}
-  - component: {fileID: 4310524978789245250}
+  - component: {fileID: 7142508867938613043}
   m_Layer: 0
   m_Name: hand
   m_TagString: Automata
@@ -1939,8 +1939,8 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!64 &4310524978789245250
-MeshCollider:
+--- !u!136 &7142508867938613043
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1957,10 +1957,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 2.55
+  m_Height: 16
+  m_Direction: 1
+  m_Center: {x: 0, y: 7.76, z: 0}
 --- !u!1 &5325012890362315162
 GameObject:
   m_ObjectHideFlags: 0

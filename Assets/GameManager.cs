@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         //Save();
         LoadAssetData();
-        //LoadGameData();
+        LoadGameData();
         Score = 0;
 
 
@@ -101,8 +101,12 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 
-    public void InstantiateAutomata(int index)
+    public IEnumerator InstantiateAutomata(int index)
     {
+        if (index == 5)
+        {
+            yield return StartCoroutine(AppearDesk());
+        }
         AutomataData automataData = prefabs[index].GetComponent<Automata>().automata_data;
         GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x,automataData.position_y,automataData.position_z),Quaternion.Euler(0.0f,automataData.rotation_y,0.0f));
         nowObject.transform.localScale = Vector3.one * automataData.scale;
@@ -123,6 +127,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameData()
     {
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            prefabs[i].GetComponent<Automata>().quantity = 0;
+        }
         if (CheckGameData())
         {
             string fromJsonData = File.ReadAllText(fileName);
@@ -216,7 +224,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator AppearDesk()
     {
         float delta = 0;
-        float duration = 0.5f;
+        float duration = 1f;
         Vector3 deskEndPos = new Vector3(0f, 2.24f, 8.67f);
         Vector3 deskStartPos = desk.transform.position;
 

@@ -17,10 +17,8 @@ public class TouchManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(2);
             if (hitObject != null)
             {
-                Debug.Log(0);
                 LerpCameraAni(Camera.main.transform, Vector3.zero, Vector3.zero, true);
             }
         }
@@ -29,12 +27,10 @@ public class TouchManager : MonoBehaviour
 
     void CheckObject()
     {
-        Debug.Log(3);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(1);
             if (hit.transform.gameObject.tag == "Automata")
             {
                 hitObject = hit.transform.gameObject;
