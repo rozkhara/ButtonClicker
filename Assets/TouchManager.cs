@@ -31,15 +31,18 @@ public class TouchManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.gameObject.tag == "Automata")
+            if (hitObject != null)
             {
-                hitObject = hit.transform.gameObject;
-                hitObject.GetComponent<Outline>().TurnOn();
-            }
-            else
-            {
-                hitObject?.GetComponent<Outline>().TurnOffOutline();
-                hitObject = null;
+                if (hit.transform.gameObject.tag == "Automata")
+                {
+                    hitObject = hit.transform.gameObject;
+                    hitObject.GetComponent<Outline>().TurnOn();
+                }
+                else
+                {
+                    hitObject?.GetComponent<Outline>().TurnOffOutline();
+                    hitObject = null;
+                }
             }
         }
         else

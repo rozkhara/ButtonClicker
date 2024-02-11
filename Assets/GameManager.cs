@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Net;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,8 +20,10 @@ public class GameManager : MonoBehaviour
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
-
+    
     public int nowIndex = 0;
+    public string factoryName;
+    public string userName;
     public static GameManager Instance
     {
         get
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
         Fauto_sum(auto_sum);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
         {
             SaveGameData();
         }
-    }
+    }*/
     public static void PrintDict<K, V>(Dictionary<K, V> dict)
     {
         foreach (KeyValuePair<K, V> entry in dict)
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
         return Score;
     }
 
-    public IEnumerator InstantiateAutomata(int index)
+    public IEnumerator InstantiateAutomata(int index, bool isLoading = false)
     {
         if (index == 5)
         {
@@ -111,7 +113,8 @@ public class GameManager : MonoBehaviour
         GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x,automataData.position_y,automataData.position_z),Quaternion.Euler(0.0f,automataData.rotation_y,0.0f));
         nowObject.transform.localScale = Vector3.one * automataData.scale;
 
-        nowIndex++;
+        if(!isLoading)
+            nowIndex++;
         panelManager.InstantiatePanel(nowIndex);
     }
 
@@ -127,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameData()
     {
+        Debug.Log(1);
         for (int i = 0; i < prefabs.Count; i++)
         {
             prefabs[i].GetComponent<Automata>().quantity = 0;
@@ -138,10 +142,13 @@ public class GameManager : MonoBehaviour
 
             Score = data.money;
             nowIndex = data.automataIndex;
+            factoryName = data.factory;
+            userName = data.user;
 
             for (int i = 0; i < nowIndex; i++)
             {
                 prefabs[i].GetComponent<Automata>().quantity = data.automataLevels[i];
+                StartCoroutine(InstantiateAutomata(i, true));
             }
         }
     }
@@ -150,6 +157,8 @@ public class GameManager : MonoBehaviour
         data.money = Score;
         data.automataIndex = nowIndex;
         List<int> automataLevel = new List<int>();
+        data.factory = factoryName;
+        data.user = userName;
 
         for (int i = 0; i < nowIndex; i++)
         {
@@ -208,7 +217,7 @@ public class GameManager : MonoBehaviour
             if (auto != null)
             {
                 auto.SetAutomataData(automataDataJson[i], auto_sum);
-                Debug.Log(auto.automata_data.id);
+                //Debug.Log(auto.automata_data.id);
             }
             store.AddObserver(prefabs[i].GetComponent<Automata>());
         }
@@ -238,6 +247,51 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void StartNewGame()
+    {
+        Score = 0;
+
+        StartCoroutine(StartGame());
+    }
+
+    public IEnumerator StartGame()
+    {
+        SceneManager.LoadScene("Play");
+
+        yield return new WaitForSeconds(2.0f);
+
+        LoadAssetData();
+
+        desk = GameObject.Find("desk_stand03");
+        panelManager = FindObjectOfType<PanelManager>();
+        touchManager = GameObject.Find("TouchManager")?.GetComponent<TouchManager>();
+
+        Fauto_sum(auto_sum);
+    }
+    public void StartLoadGame()
+    {
+        StartCoroutine(StartILoadGame());
+    }
+
+    public IEnumerator StartILoadGame()
+    {
+        if (CheckGameData())
+        {
+            yield return StartCoroutine(StartGame());
+
+            LoadGameData();
+        }
+    }
+
+    public void SetFactoryName(string s)
+    {
+        factoryName = s;
+    }
+    public void SetUserName(string s)
+    {
+        userName = s;
+    }
 }
 
 [Serializable]
@@ -246,6 +300,8 @@ public class GameData
     public long money;
     public int automataIndex;
     public List<int> automataLevels;
+    public string factory;
+    public string user;
 }
 
 

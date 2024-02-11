@@ -30,6 +30,7 @@ public class Store : ISubject
         {
             if (automata.quantity == 0)
             {
+                Debug.Log(1);
                 GameManager.Instance.StartCoroutine(GameManager.Instance.InstantiateAutomata(index));
             }
             GameManager.Instance.SetScore(automata.automata_data.price, "-");
