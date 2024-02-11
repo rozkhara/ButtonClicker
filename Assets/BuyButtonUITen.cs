@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyButtonUI : MonoBehaviour
+public class BuyButtonUITen : MonoBehaviour
 {
     public static int target;
 
@@ -11,7 +10,7 @@ public class BuyButtonUI : MonoBehaviour
     public void onclick()
     {
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
-        GameManager.Instance.store.BuyAutomata(target);
+        GameManager.Instance.store.Buy_10Automata(target);
         Debug.Log("Buyed");
     }
 }

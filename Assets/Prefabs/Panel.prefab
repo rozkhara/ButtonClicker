@@ -272,19 +272,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8152572249053886050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1303541045253095538}
-        m_TargetAssemblyTypeName: PanelPrefab, Assembly-CSharp
-        m_MethodName: onclick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3238450930095390266
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +359,7 @@ GameObject:
   - component: {fileID: 3957792901173538106}
   - component: {fileID: 2048716382830606166}
   m_Layer: 5
-  m_Name: BuyButton
+  m_Name: OneBuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -40}
+  m_AnchoredPosition: {x: 110, y: -40}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6527216245468861870
@@ -503,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb22ecea53fec347afe9d313dedf600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buybutton: {fileID: 0}
 --- !u!1 &4683206623172001971
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,8 +637,9 @@ GameObject:
   - component: {fileID: 5107490058967772338}
   - component: {fileID: 800364242280417363}
   - component: {fileID: 9023451329263380293}
+  - component: {fileID: 8182945795007934583}
   m_Layer: 5
-  m_Name: BuyButton (1)
+  m_Name: TenBuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,7 +662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: -40}
+  m_AnchoredPosition: {x: 5, y: -40}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5107490058967772338
@@ -758,7 +746,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800364242280417363}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8182945795007934583}
+        m_TargetAssemblyTypeName: BuyButtonUITen, Assembly-CSharp
+        m_MethodName: onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8182945795007934583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4696289503724791301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb4d146d2a89aa4bbc0a3be1e2eb6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5233346759618949638
 GameObject:
   m_ObjectHideFlags: 0

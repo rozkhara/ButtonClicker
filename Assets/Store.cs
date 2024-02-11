@@ -43,13 +43,19 @@ public class Store : ISubject
         }
     }
 
-    public void Buy_10Automata(Automata automata)
+    public void Buy_10Automata(int index)
     {
-        if (GameManager.Score >= automata.automata_data.price * 10)
+        Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
+        if (GameManager.Score >= 10 * automata.automata_data.price)
         {
-            GameManager.Instance.SetScore(automata.automata_data.price * 10, "-");
+            if (automata.quantity == 0)
+            {
+                GameManager.Instance.StartCoroutine(GameManager.Instance.InstantiateAutomata(index));
+            }
+            GameManager.Instance.SetScore(automata.automata_data.price, "-");
             automata.SetAutomata(10, "+");
             NotifyObserver();
+            Debug.Log("BuyAutomata");
         }
         else
         {
