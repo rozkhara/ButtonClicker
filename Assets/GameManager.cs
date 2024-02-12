@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TouchManager touchManager;
     public PanelManager panelManager;
     public GameObject desk;
+    public bool isNewGame;
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
@@ -130,11 +131,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadGameData()
     {
-        Debug.Log(1);
-        for (int i = 0; i < prefabs.Count; i++)
-        {
-            prefabs[i].GetComponent<Automata>().quantity = 0;
-        }
         if (CheckGameData())
         {
             string fromJsonData = File.ReadAllText(fileName);
@@ -251,16 +247,12 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         Score = 0;
-
-        StartCoroutine(StartGame());
+        
+        StartGame();
     }
 
-    public IEnumerator StartGame()
+    public void StartGame()
     {
-        SceneManager.LoadScene("Play");
-
-        yield return new WaitForSeconds(2.0f);
-
         LoadAssetData();
 
         desk = GameObject.Find("desk_stand03");
@@ -268,17 +260,18 @@ public class GameManager : MonoBehaviour
         touchManager = GameObject.Find("TouchManager")?.GetComponent<TouchManager>();
 
         Fauto_sum(auto_sum);
-    }
-    public void StartLoadGame()
-    {
-        StartCoroutine(StartILoadGame());
+
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            prefabs[i].GetComponent<Automata>().quantity = 0;
+        }
     }
 
-    public IEnumerator StartILoadGame()
+    public void StartLoadGame()
     {
         if (CheckGameData())
         {
-            yield return StartCoroutine(StartGame());
+            StartGame();
 
             LoadGameData();
         }

@@ -3668,6 +3668,8 @@ MonoBehaviour:
     money: 0
     automataIndex: 0
     automataLevels: 
+    factory: 
+    user: 
   fileName: 
   automataDataJson: []
 --- !u!4 &1895103372

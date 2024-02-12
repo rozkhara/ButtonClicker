@@ -32,7 +32,7 @@ public class LoadButtonBehavior : MonoBehaviour
             SoundManager.Instance.PlaySFXSound("ButtonUp");
             this.gameObject.transform.position = initPos;
             isDown = false;
-            GameManager.Instance.StartLoadGame();
+            LoadSceneManager.LoadScene(false);
         }
     }
 }

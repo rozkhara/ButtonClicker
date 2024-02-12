@@ -46,7 +46,7 @@ public class StartButtonBehavior : MonoBehaviour
     {
         if (GameManager.Instance.factoryName != "" && GameManager.Instance.userName != "")
         {
-            GameManager.Instance.StartNewGame();
+            LoadSceneManager.LoadScene(true);
         }
     }
 }
