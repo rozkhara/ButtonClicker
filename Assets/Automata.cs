@@ -19,6 +19,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     public void SetAutomataData(AutomataData automataData, IObserver auto_sum)
     {
         automata_data = automataData;
+        Debug.Log("setauto");
         AddObserver(auto_sum);
     }
     public void subject_alert()

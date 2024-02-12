@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static long Score { get; private set; }
 
+    public Time playTime;
     public Store store = new Store();
     public Auto_sum auto_sum = new Auto_sum();
     public TouchManager touchManager;
@@ -49,8 +50,8 @@ public class GameManager : MonoBehaviour
         //LoadGameData();
         Score = 0;
 
+        StartCoroutine(Fauto_sum(auto_sum));
 
-        Fauto_sum(auto_sum);
     }
 
     /*private void Update()
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         Score += auto_sum.increment;
+        StartCoroutine(Fauto_sum(auto_sum));
     }
 
     public GameData data = new GameData();
@@ -304,6 +306,7 @@ public class Auto_sum : IObserver
     public long increment { get; private set; }
     public void subject_alert()
     {
+        increment = 0;
         foreach (GameObject automata in GameManager.Instance.prefabs)
         {
             increment += automata.GetComponent<Automata>().all_production;
