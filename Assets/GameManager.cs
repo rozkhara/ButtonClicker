@@ -5,12 +5,14 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Net;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static long Score { get; private set; }
+    public string StringifiedScore { get; private set; }
+
+    public bool isDisplayModeEnglish = true;
 
     public Time playTime;
     public Store store = new Store();
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
-    
+
     public int nowIndex = 0;
     public string factoryName;
     public string userName;
@@ -95,13 +97,20 @@ public class GameManager : MonoBehaviour
                 "*" => Score * value,
                 _ => throw new Exception()
             };
-
         }
         catch (DivideByZeroException)
         {
             Score = _score;
         }
         Debug.Log(Score);
+        if (isDisplayModeEnglish)
+        {
+            StringifiedScore = DisplayNumber.EnglishNumber(Score);
+        }
+        else
+        {
+            StringifiedScore = DisplayNumber.ExponentNumber(Score);
+        }
         return Score;
     }
 
@@ -112,11 +121,10 @@ public class GameManager : MonoBehaviour
             yield return StartCoroutine(AppearDesk());
         }
         AutomataData automataData = prefabs[index].GetComponent<Automata>().automata_data;
-        GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x,automataData.position_y,automataData.position_z),Quaternion.Euler(0.0f,automataData.rotation_y,0.0f));
+        GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x, automataData.position_y, automataData.position_z), Quaternion.Euler(0.0f, automataData.rotation_y, 0.0f));
         nowObject.transform.localScale = Vector3.one * automataData.scale;
 
-        if(!isLoading)
-            nowIndex++;
+        if (!isLoading) nowIndex++;
         panelManager.InstantiatePanel(nowIndex);
     }
 
@@ -239,7 +247,7 @@ public class GameManager : MonoBehaviour
         {
             float t = delta / duration;
 
-            desk.transform.position = Vector3.Lerp(deskStartPos,deskEndPos, t);
+            desk.transform.position = Vector3.Lerp(deskStartPos, deskEndPos, t);
 
             delta += Time.deltaTime;
             yield return null;
@@ -249,7 +257,7 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         Score = 0;
-        
+
         StartGame();
     }
 
@@ -298,8 +306,6 @@ public class GameData
     public string factory;
     public string user;
 }
-
-
 
 public class Auto_sum : IObserver
 {

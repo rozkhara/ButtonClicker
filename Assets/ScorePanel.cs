@@ -37,7 +37,7 @@ public class ScorePanel : MonoBehaviour
     }
     void Update()
     {
-        Scoretxt.text = GameManager.Score.ToString();
+        Scoretxt.text = GameManager.Instance.StringifiedScore;
     }
 
 }
