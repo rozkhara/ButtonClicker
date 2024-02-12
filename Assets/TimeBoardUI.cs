@@ -4,19 +4,27 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[Serializable]
+public class LeaderBoardData
+{
+    public string facName;
+    public string userName;
+    public float claerTime;
+}
+
+
 public class TimeBoardUI : MonoBehaviour
 {
     public GameObject boardPrefab;
     public GameObject boardLinePrefab;
-    public List<Tuple<string, float>> users = new List<Tuple<string, float>>();
-
+    public List<LeaderBoardData> users;
     // Start is called before the first frame update
-    void Start()
+    void LeaderBoardInstantiate()
     {
-        foreach (Tuple<string, float> user in users)
+        /*+foreach (LeaderBoardData user in users)
         {
             Instantiate(boardLinePrefab, boardPrefab.transform);
-        }
+        }*/
     }
 
     public void ActiveBoard()
@@ -28,5 +36,11 @@ public class TimeBoardUI : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
-    // Update is called once per frame
+
+    public void SortLeaderBoardData()
+    {
+        users.Sort((LeaderBoardData a, LeaderBoardData b) => (a.claerTime > b.claerTime ? 1 : -1));
+    }
 }
+
+
