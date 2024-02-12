@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TouchManager : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckObject();
+        if (!EventSystem.current.IsPointerOverGameObject())
+            CheckObject();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -31,19 +33,21 @@ public class TouchManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hitObject != null)
+            if (hit.transform.gameObject.tag == "Automata")
             {
-                if (hit.transform.gameObject.tag == "Automata")
-                {
-                    hitObject = hit.transform.gameObject;
-                    hitObject.GetComponent<Outline>().TurnOn();
-                }
-                else
+                hitObject = hit.transform.gameObject;
+                hitObject.GetComponent<Outline>().TurnOn();
+            }
+            else
+            {
+                if (hitObject != null)
                 {
                     hitObject?.GetComponent<Outline>().TurnOffOutline();
-                    hitObject = null;
                 }
+                    
+                hitObject = null;
             }
+ 
         }
         else
         {
