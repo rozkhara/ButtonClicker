@@ -213,8 +213,8 @@ public class GameManager : MonoBehaviour
     }*/
     public void LoadAssetData()
     {
-        fileName = Application.dataPath + "/AssetData.json";
-        string fromJsonData = File.ReadAllText(fileName);
+        string assetFileName = Application.dataPath + "/AssetData.json";
+        string fromJsonData = File.ReadAllText(assetFileName);
 
         automataDataJson = JsonConvert.DeserializeObject<List<AutomataData>>(fromJsonData);
 
@@ -262,6 +262,8 @@ public class GameManager : MonoBehaviour
         Score = 0;
 
         StartGame();
+
+        LoadLeaderBoardData();
     }
 
     public void StartGame()
@@ -297,6 +299,31 @@ public class GameManager : MonoBehaviour
     public void SetUserName(string s)
     {
         userName = s;
+    }
+
+    public List<LeaderBoardData> users;
+
+    public void SortLeaderBoardData()
+    {
+        users.Sort((LeaderBoardData a, LeaderBoardData b) => (a.claerTime > b.claerTime ? 1 : -1));
+    }
+
+    public void SaveLeaderBoardData()
+    {
+        string leaderFileName = Application.persistentDataPath + "/LeaderBoardData.json";
+        string toJsonData = JsonConvert.SerializeObject(users);
+
+        File.WriteAllText(leaderFileName, toJsonData);
+    }
+
+    public void LoadLeaderBoardData()
+    {
+        string leaderFileName = Application.persistentDataPath + "/LeaderBoardData.json";
+        if (File.Exists(leaderFileName))
+        {
+            string fromJsonData = File.ReadAllText(leaderFileName);
+            users = JsonUtility.FromJson<List<LeaderBoardData>>(fromJsonData);
+        }
     }
 }
 

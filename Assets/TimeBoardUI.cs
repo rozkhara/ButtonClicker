@@ -17,7 +17,7 @@ public class TimeBoardUI : MonoBehaviour
 {
     public GameObject boardPrefab;
     public GameObject boardLinePrefab;
-    public List<LeaderBoardData> users;
+    
     // Start is called before the first frame update
     void LeaderBoardInstantiate()
     {
@@ -37,10 +37,7 @@ public class TimeBoardUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void SortLeaderBoardData()
-    {
-        users.Sort((LeaderBoardData a, LeaderBoardData b) => (a.claerTime > b.claerTime ? 1 : -1));
-    }
+
 }
 
 
