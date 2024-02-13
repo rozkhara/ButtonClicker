@@ -18,13 +18,22 @@ public class TimeBoardUI : MonoBehaviour
     public GameObject boardPrefab;
     public GameObject boardLinePrefab;
     public List<LeaderBoardData> users;
-    // Start is called before the first frame update
+
+    void BoardLineInstantiate(int index)
+    {
+        GameObject boardline = Instantiate(boardLinePrefab, boardPrefab.transform);
+        boardline.transform.GetChild(0).GetComponent<TMP_Text>().text = index.ToString();
+        boardline.transform.GetChild(1).GetComponent<TMP_Text>().text = users[index].facName;
+        boardline.transform.GetChild(2).GetComponent<TMP_Text>().text = users[index].userName;
+        boardline.transform.GetChild(3).GetComponent<TMP_Text>().text = users[index].claerTime.ToString();
+    }
+
     void LeaderBoardInstantiate()
     {
-        /*+foreach (LeaderBoardData user in users)
+        for (int i = 0; i < 10; i++)
         {
-            Instantiate(boardLinePrefab, boardPrefab.transform);
-        }*/
+            BoardLineInstantiate (i);
+        }
     }
 
     public void ActiveBoard()

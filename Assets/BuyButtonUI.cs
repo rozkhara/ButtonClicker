@@ -1,17 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BuyButtonUI : MonoBehaviour
 {
     public static int target;
+    public int quatity;
+    public TMP_Text button;
+    public long price;
 
+    private void Start()
+    {
+        target = transform.parent.GetComponent<PanelPrefab>().automata_id;
+        quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
+    }
 
     public void onclick()
     {
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
         GameManager.Instance.store.BuyAutomata(target);
+        quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
+        price = Balancing.Cost[target, quatity+1];
+        button.text = price.ToString();
         Debug.Log("Buyed");
     }
+
 }

@@ -26,14 +26,17 @@ public class Store : ISubject
     public void BuyAutomata(int index)
     {
         Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
-        if (GameManager.Score >= automata.automata_data.price)
+        long price = 0;
+        int quantity = automata.quantity;
+        price = Balancing.Cost[index, quantity+1];
+        if (GameManager.Score >= price)
         {
             if (automata.quantity == 0)
             {
                 Debug.Log(1);
                 GameManager.Instance.StartCoroutine(GameManager.Instance.InstantiateAutomata(index));
             }
-            GameManager.Instance.SetScore(automata.automata_data.price, "-");
+            GameManager.Instance.SetScore(price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
             Debug.Log("BuyAutomata");
@@ -47,13 +50,19 @@ public class Store : ISubject
     public void Buy_10Automata(int index)
     {
         Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
-        if (GameManager.Score >= 10 * automata.automata_data.price)
+        long totalPrice = 0;
+        int quatity = automata.quantity;
+        for (int i = 0;i<10;i++)
+        {
+            totalPrice += Balancing.Cost[index, quatity + 1 + i];
+        }
+        if (GameManager.Score >= totalPrice)
         {
             if (automata.quantity == 0)
             {
                 GameManager.Instance.StartCoroutine(GameManager.Instance.InstantiateAutomata(index));
             }
-            GameManager.Instance.SetScore(automata.automata_data.price, "-");
+            GameManager.Instance.SetScore(totalPrice, "-");
             automata.SetAutomata(10, "+");
             NotifyObserver();
             Debug.Log("BuyAutomata");
