@@ -7,7 +7,9 @@ using TMPro;
 public class Info : MonoBehaviour
 {
     public Button btn;
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI productionText;
 
     /*public void SetActive(bool b, string str = "")
     {
@@ -27,10 +29,12 @@ public class Info : MonoBehaviour
     {
         Camera.main.transform.position = new Vector3(0f, 1f, -10f);
     }*/
-    public void TurnOn(string str)
+    public void TurnOn(Automata automata)
     {
         gameObject.SetActive(true);
-        text.text = str;
+        nameText.text = automata.automata_data.name;
+        descriptionText.text = "";
+        productionText.text = automata.all_production.ToString();
     }
 
     public void TurnOff()

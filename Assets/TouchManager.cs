@@ -106,7 +106,7 @@ public class TouchManager : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(endRot);
 
         if (b)
-            infoPanel.TurnOn(clickedObject.name);
+            infoPanel.TurnOn(clickedObject.GetComponent<Automata>());
         else
         {
             infoPanel.TurnOffObject();
