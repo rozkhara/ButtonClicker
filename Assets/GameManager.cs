@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Fauto_sum(Auto_sum auto_sum)
     {
         yield return new WaitForSecondsRealtime(1);
-        Score += auto_sum.increment;
+        SetScore(auto_sum.increment);
         StartCoroutine(Fauto_sum(auto_sum));
     }
 
