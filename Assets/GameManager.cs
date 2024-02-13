@@ -124,7 +124,10 @@ public class GameManager : MonoBehaviour
         GameObject nowObject = Instantiate(prefabs[index], new Vector3(automataData.position_x, automataData.position_y, automataData.position_z), Quaternion.Euler(0.0f, automataData.rotation_y, 0.0f));
         nowObject.transform.localScale = Vector3.one * automataData.scale;
 
-        if (!isLoading) nowIndex++;
+        if (!isLoading)
+        {
+            nowIndex++;
+        }
         panelManager.InstantiatePanel(nowIndex);
     }
 

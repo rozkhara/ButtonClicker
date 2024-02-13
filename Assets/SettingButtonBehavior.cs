@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StartButtonBehavior : MonoBehaviour
+public class SettingButtonBehavior : MonoBehaviour
 {
     private Vector3 initPos;
     private Vector3 pressedPos;
     private bool isDown = false;
-    public GameObject inputPanel;
+    public GameObject settingPanel;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class StartButtonBehavior : MonoBehaviour
             SoundManager.Instance.PlaySFXSound("ButtonDown");
             this.gameObject.transform.position = pressedPos;
             isDown = true;
-            TurnOnPanel(true);
+            settingPanel.SetActive(true);
         }
     }
 
@@ -34,19 +34,6 @@ public class StartButtonBehavior : MonoBehaviour
             SoundManager.Instance.PlaySFXSound("ButtonUp");
             this.gameObject.transform.position = initPos;
             isDown = false; 
-        }
-    }
-
-    public void TurnOnPanel(bool active)
-    {
-        inputPanel.SetActive(active);
-    }
-
-    public void LoadPlayScene()
-    {
-        if (GameManager.Instance.factoryName != "" && GameManager.Instance.userName != "")
-        {
-            LoadSceneManager.LoadScene(true);
         }
     }
 }

@@ -13,16 +13,13 @@ public class PanelManager: MonoBehaviour
     public GameObject storeContent;
     private void Awake()
     {
-
+        storeContent = transform.Find("Content").gameObject;
     }
 
     private void Start()
     {
-
         //기본적으로
-        storeContent = GameObject.Find("Content");
         InstantiatePanel(0);
-
     }
 
     public void InstantiatePanel(int index)
