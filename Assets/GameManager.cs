@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     /// <param name="value">Value to modify the current score with</param>
     /// <param name="operator">+, -, /, *</param>
     /// <returns></returns>
-    public long SetScore(int value, string @operator = "+")
+    public long SetScore(long value, string @operator = "+")
     {
         long _score = Score;
         try
