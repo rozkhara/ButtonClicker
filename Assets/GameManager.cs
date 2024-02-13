@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public PanelManager panelManager;
     public GameObject desk;
     public bool isNewGame;
+    public Balancing balancing = new Balancing();
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         //LoadGameData();
         Score = 0;
 
+        balancing.CallDP();
         StartCoroutine(Fauto_sum(auto_sum));
 
     }
