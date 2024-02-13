@@ -325,6 +325,23 @@ public class GameManager : MonoBehaviour
             users = JsonUtility.FromJson<List<LeaderBoardData>>(fromJsonData);
         }
     }
+
+    public void ClearGame()
+    {
+        if (isNewGame)
+        {
+            LeaderBoardData leaderBoardData = new LeaderBoardData();
+            leaderBoardData.facName = factoryName;
+            leaderBoardData.userName = userName;
+            leaderBoardData.claerTime = 100f;
+
+            users.Add(leaderBoardData);
+
+            SortLeaderBoardData();
+
+            //leaderboard instantiate
+        }
+    }
 }
 
 [Serializable]
