@@ -19,7 +19,6 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     public void SetAutomataData(AutomataData automataData, IObserver auto_sum)
     {
         automata_data = automataData;
-        Debug.Log("setauto");
         AddObserver(auto_sum);
     }
     public void subject_alert()
@@ -27,6 +26,10 @@ public class Automata : MonoBehaviour,IObserver, ISubject
         sol_production = automata_data.default_production;
         all_production = sol_production * quantity;
         NotifyObserver();
+        if(automata_data.id == 9 && quantity >= 10)
+        {
+            GameManager.Instance.ClearGame();
+        }
     }
 
     public void AddObserver(IObserver observer)
