@@ -14,11 +14,6 @@ public class PanelManager: MonoBehaviour
     private void Awake()
     {
         storeContent = transform.Find("Content").gameObject;
-    }
-
-    private void Start()
-    {
-        //기본적으로
         InstantiatePanel(0);
     }
 
