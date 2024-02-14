@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public bool isDisplayModeEnglish = true;
 
-    public Time playTime;
     public Store store = new Store();
     public Auto_sum auto_sum = new Auto_sum();
     public TouchManager touchManager;
@@ -22,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject desk;
     public bool isNewGame;
     public Balancing balancing = new Balancing();
+    public float currentTime;
+    public float startTime;
 
     public List<Automata> automata_list = new List<Automata>();
     public List<GameObject> prefabs = new List<GameObject>();
@@ -58,9 +59,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    /*private void Update()
+
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        currentTime = Time.time - startTime;
+        /*if(Input.GetKeyDown(KeyCode.A))
         {
             StartCoroutine(AppearDesk());
         }
@@ -68,8 +71,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             SaveGameData();
-        }
-    }*/
+        }*/
+    }
     public static void PrintDict<K, V>(Dictionary<K, V> dict)
     {
         foreach (KeyValuePair<K, V> entry in dict)

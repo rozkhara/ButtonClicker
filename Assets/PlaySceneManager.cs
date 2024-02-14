@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlaySceneManager : MonoBehaviour
 {
-    public float currentTime;
-    public float startTime;
+
     private void Start()
     {
         PlayScene();
-        startTime = Time.time;
+        GameManager.Instance.startTime = Time.time;
     }
 
     private void PlayScene()
