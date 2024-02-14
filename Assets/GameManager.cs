@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour
         {
             Score = _score;
         }
-        Debug.Log(Score);
         if (isDisplayModeEnglish)
         {
             StringifiedScore = DisplayNumber.EnglishNumber(Score);
