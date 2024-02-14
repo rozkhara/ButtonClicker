@@ -12,15 +12,7 @@ public class RadioButtonTracker : MonoBehaviour
     }
     public void CheckValue()
     {
-        if (toggle.isOn)
-        {
-            GameManager.Instance.isDisplayModeEnglish = true;
-            GameManager.Instance.SetScore(0);
-        }
-        else
-        {
-            GameManager.Instance.isDisplayModeEnglish = false;
-            GameManager.Instance.SetScore(0);
-        }
+        GameManager.Instance.isDisplayModeEnglish = toggle.isOn;
+        GameManager.Instance.SetScore(0);
     }
 }

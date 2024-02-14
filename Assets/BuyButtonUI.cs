@@ -32,7 +32,7 @@ public class BuyButtonUI : MonoBehaviour
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
         GameManager.Instance.store.BuyAutomata(target);
         quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
-        price = Balancing.Cost[target, quatity+1];
+        price = Balancing.Cost[target, quatity + 1];
         if (GameManager.Instance.isDisplayModeEnglish)
         {
             button.text = DisplayNumber.EnglishNumber(price);
