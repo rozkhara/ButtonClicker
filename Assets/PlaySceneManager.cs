@@ -11,6 +11,16 @@ public class PlaySceneManager : MonoBehaviour
         GameManager.Instance.startTime = Time.time;
     }
 
+    public void SaveGame()
+    {
+        GameManager.Instance.SaveGameData();
+    }
+    public void QuitGame()
+    {
+        SaveGame();
+        Application.Quit();
+    }
+
     private void PlayScene()
     {
         if (GameManager.Instance.isNewGame)

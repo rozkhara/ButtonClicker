@@ -1744,7 +1744,6 @@ GameObject:
   - component: {fileID: 479433131}
   - component: {fileID: 479433130}
   - component: {fileID: 479433129}
-  - component: {fileID: 479433128}
   - component: {fileID: 479433127}
   m_Layer: 5
   m_Name: Exit button
@@ -1809,22 +1808,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &479433128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479433126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b170be344f57ee143b9581e3db2db703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Setting_panel: {fileID: 1830604546}
-  Setting_btn: {fileID: 479433126}
-  Exit_btn: {fileID: 0}
-  BackgroundPanel: {fileID: 0}
 --- !u!114 &479433129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7377,7 +7360,6 @@ MonoBehaviour:
   panelManager: {fileID: 0}
   desk: {fileID: 0}
   isNewGame: 0
-  balancing: {fileID: 0}
   currentTime: 0
   startTime: 0
   automata_list: []
