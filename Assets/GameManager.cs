@@ -186,6 +186,12 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(fileName, toJsonData);
     }
 
+    public void QuitGame()
+    {
+        SaveGameData();
+        Application.Quit();
+    }
+
     public bool CheckGameData()
     {
         fileName = Application.persistentDataPath + "/GameData.json";
