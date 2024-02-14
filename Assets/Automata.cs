@@ -6,25 +6,26 @@ public class Automata : MonoBehaviour,IObserver, ISubject
 {
     //public SpeedController speedController;
     public AutomataData automata_data = new AutomataData();
-    long sol_production;
     public long all_production { get; private set; } = 0;
     public int quantity = 0;
     public List<IObserver> observer_list = new List<IObserver>();
+    public int autoindex;
 
     public Automata(AutomataData automataData)
     {
         automata_data = automataData;
     }
 
-    public void SetAutomataData(AutomataData automataData, IObserver auto_sum)
+    public void SetAutomataData(AutomataData automataData, int i, IObserver auto_sum)
     {
         automata_data = automataData;
+        autoindex = i;
         AddObserver(auto_sum);
+        
     }
     public void subject_alert()
     {
-        sol_production = Balancing.Produce[automata_data.id, 0];
-        all_production = sol_production * quantity;
+        all_production = Balancing.Produce[autoindex, quantity];
         NotifyObserver();
         if(automata_data.id == 9 && quantity >= 10)
         {

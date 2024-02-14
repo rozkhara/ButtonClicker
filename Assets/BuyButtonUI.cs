@@ -9,6 +9,7 @@ public class BuyButtonUI : MonoBehaviour
     public static int target;
     public int quatity;
     public TMP_Text button;
+    public long production;
     public long price;
 
     private void Start()

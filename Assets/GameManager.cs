@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
             //Debug.Log(auto_sum);
             if (auto != null)
             {
-                auto.SetAutomataData(automataDataJson[i], auto_sum);
+                auto.SetAutomataData(automataDataJson[i], i, auto_sum);
                 //Debug.Log(auto.automata_data.id);
             }
             store.AddObserver(prefabs[i].GetComponent<Automata>());
