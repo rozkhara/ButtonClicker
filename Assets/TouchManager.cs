@@ -14,7 +14,15 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if (hitObject != null)
+            {
+                hitObject?.GetComponent<Outline>().TurnOffOutline();
+            }
+            hitObject = null;
+        }
+        else
             CheckObject();
 
         if (Input.GetMouseButtonDown(0))
@@ -35,6 +43,7 @@ public class TouchManager : MonoBehaviour
         {
             if (hit.transform.gameObject.tag == "Automata")
             {
+                hitObject?.GetComponent<Outline>().TurnOffOutline();
                 hitObject = hit.transform.gameObject;
                 hitObject.GetComponent<Outline>().TurnOn();
             }
