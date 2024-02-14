@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Balancing : MonoBehaviour
+public class Balancing
 {
     private const float Costmultiplier = 1.3f; // 7티어 * 1.3 그 다음 오토마타 구매 비용
     private readonly float[] CostCoefficient = new float[2] { 1.3f, 1.4f }; // 지수
@@ -33,6 +33,7 @@ public class Balancing : MonoBehaviour
 
     public void CallDP()
     {
+        Init();
         CostDP();
         TimeDP();
         ProduceDP();
@@ -106,8 +107,6 @@ public class Balancing : MonoBehaviour
         }
     }
 
-
-
     public void ProduceDP()
     {
         for (int i = 0; i < 3000; ++i)
@@ -155,28 +154,28 @@ public class Balancing : MonoBehaviour
         }
         */
 
-    private void Start()
-    {
-        Init();
-    }
+    //private void Start()
+    //{
+    //    Init();
+    //}
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RetProduce(tier, level);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            RetCost(tier, level);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RetTime(tier, level);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CallDP();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        RetProduce(tier, level);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.W))
+    //    {
+    //        RetCost(tier, level);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        RetTime(tier, level);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.C))
+    //    {
+    //        CallDP();
+    //    }
+    //}
 }
