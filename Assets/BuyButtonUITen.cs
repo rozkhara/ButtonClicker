@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,12 +15,39 @@ public class BuyButtonUITen : MonoBehaviour
     {
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
         quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
+        price10 = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            price10 += Balancing.Cost[target, quatity + 1 + i];
+        }
+        if (GameManager.Instance.isDisplayModeEnglish)
+        {
+            button10.text = DisplayNumber.EnglishNumber(price10);
+        }
+        else
+        {
+            button10.text = DisplayNumber.ExponentNumber(price10);
+        }
     }
 
     public void onclick()
     {
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
         GameManager.Instance.store.Buy_10Automata(target);
+        quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
+        price10 = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            price10 += Balancing.Cost[target, quatity + 1 + i];
+        }
+        if (GameManager.Instance.isDisplayModeEnglish)
+        {
+            button10.text = DisplayNumber.EnglishNumber(price10);
+        }
+        else
+        {
+            button10.text = DisplayNumber.ExponentNumber(price10);
+        }
         Debug.Log("Buyed");
     }
 }

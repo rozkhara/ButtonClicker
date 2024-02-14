@@ -15,6 +15,15 @@ public class BuyButtonUI : MonoBehaviour
     {
         target = transform.parent.GetComponent<PanelPrefab>().automata_id;
         quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
+        price = Balancing.Cost[target, quatity + 1];
+        if (GameManager.Instance.isDisplayModeEnglish)
+        {
+            button.text = DisplayNumber.EnglishNumber(price);
+        }
+        else
+        {
+            button.text = DisplayNumber.ExponentNumber(price);
+        }
     }
 
     public void onclick()
@@ -23,7 +32,14 @@ public class BuyButtonUI : MonoBehaviour
         GameManager.Instance.store.BuyAutomata(target);
         quatity = GameManager.Instance.prefabs[target].GetComponent<Automata>().quantity;
         price = Balancing.Cost[target, quatity+1];
-        button.text = price.ToString();
+        if (GameManager.Instance.isDisplayModeEnglish)
+        {
+            button.text = DisplayNumber.EnglishNumber(price);
+        }
+        else
+        {
+            button.text = DisplayNumber.ExponentNumber(price);
+        }
         Debug.Log("Buyed");
     }
 

@@ -16,6 +16,7 @@ public class TimeBoardUI : MonoBehaviour
 {
     public GameObject boardPrefab;
     public GameObject boardLinePrefab;
+    public bool boardOn;
     //public List<LeaderBoardData> users;
 
     void BoardLineInstantiate(int index)
@@ -27,7 +28,7 @@ public class TimeBoardUI : MonoBehaviour
         boardline.transform.GetChild(3).GetComponent<TMP_Text>().text = GameManager.Instance.users[index].claerTime.ToString();
     }
 
-    void LeaderBoardInstantiate()
+    public void LeaderBoardInstantiate()
     {
         int minCount = GameManager.Instance.users.Count < 10 ? GameManager.Instance.users.Count : 10;
         for (int i = 0; i < minCount; i++)
@@ -46,7 +47,12 @@ public class TimeBoardUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-
+    public void ReLeaderBoardInstantiate()
+    {
+        while (boardPrefab.transform.GetChild(0)!=null)
+        {
+            Destroy(boardPrefab.transform.GetChild(0));
+        }
+        LeaderBoardInstantiate();
+    }
 }
-
-

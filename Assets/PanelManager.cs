@@ -19,8 +19,13 @@ public class PanelManager: MonoBehaviour
 
     public void InstantiatePanel(int index)
     {
-        PanelPrefab panel = Instantiate(panelprefab, storeContent.transform);
-        panel.SetPanelPrefab(index);
+        if (index < 10)
+        {
+            PanelPrefab panel = Instantiate(panelprefab, storeContent.transform);
+            panel.SetPanelPrefab(index);
+
+        }
+
     }
 
     private void Update()

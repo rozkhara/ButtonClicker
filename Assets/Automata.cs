@@ -6,8 +6,8 @@ public class Automata : MonoBehaviour,IObserver, ISubject
 {
     //public SpeedController speedController;
     public AutomataData automata_data = new AutomataData();
-    int sol_production;
-    public int all_production { get; private set; } = 0;
+    long sol_production;
+    public long all_production { get; private set; } = 0;
     public int quantity = 0;
     public List<IObserver> observer_list = new List<IObserver>();
 
@@ -23,7 +23,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     }
     public void subject_alert()
     {
-        sol_production = automata_data.default_production;
+        sol_production = Balancing.Produce[automata_data.id, 0];
         all_production = sol_production * quantity;
         NotifyObserver();
         if(automata_data.id == 9 && quantity >= 10)
