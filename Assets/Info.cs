@@ -33,7 +33,7 @@ public class Info : MonoBehaviour
     {
         gameObject.SetActive(true);
         nameText.text = automata.automata_data.name;
-        descriptionText.text = "";
+        descriptionText.text = automata.automata_data.description;
         productionText.text = automata.all_production.ToString();
     }
 

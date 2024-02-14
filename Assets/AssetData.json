@@ -13,7 +13,8 @@
     "rotation_y": 180.0,
     "camera_rotation_x": 25.0,
     "camera_rotation_y": 37.5,
-    "scale": 0.3
+    "scale": 0.3,
+    "description": ""
   },
   {
     "default_production": 2,
@@ -29,7 +30,8 @@
     "rotation_y": 0.0,
     "camera_rotation_x": 30.0,
     "camera_rotation_y": 0,
-    "scale": 0.22
+    "scale": 0.22,
+    "description": ""
   },
   {
     "default_production": 3,
@@ -45,7 +47,8 @@
     "rotation_y": 0.0,
     "camera_rotation_x": 21.0,
     "camera_rotation_y": 0,
-    "scale": 0.3
+    "scale": 0.3,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -61,7 +64,8 @@
     "rotation_y": 0.0,
     "camera_rotation_x": 17.0,
     "camera_rotation_y": 0,
-    "scale": 0.22
+    "scale": 0.22,
+    "description": ""
   },
   {
     "default_production": 5,
@@ -77,7 +81,8 @@
     "rotation_y": 0.0,
     "camera_rotation_x": 30,
     "camera_rotation_y": 0,
-    "scale": 1.0
+    "scale": 1.0,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -93,7 +98,8 @@
     "rotation_y": 0.0,
     "camera_rotation_x": 11.5,
     "camera_rotation_y": 25.0,
-    "scale": 1.0
+    "scale": 1.0,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -109,7 +115,8 @@
     "rotation_y": 270.0,
     "camera_rotation_x": 13.5,
     "camera_rotation_y": 0,
-    "scale": 0.6
+    "scale": 0.6,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -125,7 +132,8 @@
     "rotation_y": 180.0,
     "camera_rotation_x": 18.43,
     "camera_rotation_y": 0,
-    "scale": 1.0
+    "scale": 1.0,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -141,7 +149,8 @@
     "rotation_y": -136.914,
     "camera_rotation_x": 25.0,
     "camera_rotation_y": 37.5,
-    "scale": 0.7
+    "scale": 0.7,
+    "description": ""
   },
   {
     "default_production": 4,
@@ -157,6 +166,7 @@
     "rotation_y": 180.0,
     "camera_rotation_x": 25.0,
     "camera_rotation_y": 37.5,
-    "scale": 0.6
+    "scale": 0.6,
+    "description": ""
   }
 ]

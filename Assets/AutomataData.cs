@@ -25,4 +25,6 @@ public class AutomataData
     public float camera_rotation_y;
 
     public float scale;
+
+    public string description;
 }
