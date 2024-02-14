@@ -14,7 +14,7 @@
     "camera_rotation_x": 25.0,
     "camera_rotation_y": 37.5,
     "scale": 0.3,
-    "description": ""
+    "description": "\"손이 하나만 더 있다면 얼마나 좋을까...\"\n당신의 상상을 현실로 만들어주는 최고의 도구."
   },
   {
     "default_production": 2,
@@ -31,7 +31,7 @@
     "camera_rotation_x": 30.0,
     "camera_rotation_y": 0,
     "scale": 0.22,
-    "description": ""
+    "description": "TechnoDynamics™사의 최신 기술 MechPulse™를 탑재한 최대 출력 505마력의 펀칭기계."
   },
   {
     "default_production": 3,
@@ -39,7 +39,7 @@
     "price": 4,
     "name": "waterwheel",
     "position_x": 4.102,
-    "position_y": -0.05,
+    "position_y": 0.05,
     "position_z": 2.21,
     "camera_position_x": 3.5,
     "camera_position_y": 2.3,
@@ -48,7 +48,7 @@
     "camera_rotation_x": 21.0,
     "camera_rotation_y": 0,
     "scale": 0.3,
-    "description": ""
+    "description": "고유 에너지 회수 매커니즘을 통해 지속가능한 에너지를 생산합니다.\n - \"물이 없는 곳에서 이 정도의 회전을...?!\""
   },
   {
     "default_production": 4,
@@ -65,7 +65,7 @@
     "camera_rotation_x": 17.0,
     "camera_rotation_y": 0,
     "scale": 0.22,
-    "description": ""
+    "description": "풍력 에너지의 할아버지.\n보고 있으면 왠지 튤립이 떠오른다."
   },
   {
     "default_production": 5,
@@ -82,7 +82,7 @@
     "camera_rotation_x": 30,
     "camera_rotation_y": 0,
     "scale": 1.0,
-    "description": ""
+    "description": "귀엽습니다."
   },
   {
     "default_production": 4,
@@ -90,7 +90,7 @@
     "price": 5,
     "name": "herons",
     "position_x": -7.43,
-    "position_y": 3.71,
+    "position_y": 3.25,
     "position_z": 14.73,
     "camera_position_x": -12.9,
     "camera_position_y": 9.8,
@@ -99,7 +99,7 @@
     "camera_rotation_x": 11.5,
     "camera_rotation_y": 25.0,
     "scale": 1.0,
-    "description": ""
+    "description": "고대의 현자가 만들었다는 장난감.\n증기의 운동에너지를 회전력으로 바꾸어주는 듯 하다."
   },
   {
     "default_production": 4,
@@ -116,14 +116,14 @@
     "camera_rotation_x": 13.5,
     "camera_rotation_y": 0,
     "scale": 0.6,
-    "description": ""
+    "description": "퓩. 퓨퓩. 펌. 펌핑한다 퓨퓩. 퓩 퓩펌. 펌핑한다. 퓩. 펌핑. 퓨퓩 퓩. 펌. 펌핑. 퓩 한다 퓨퓩. 펌핑. 한다 퓩.퓨퓩 퓩. 퓩 펌. 펌핑한. 다퓩 퓨퓩 퓩.펌핑한다. 퓩퓩. 퓨퓩 펌. 펌핑한다퓨퓩. 퓩 퓩펌. 펌핑한다. 퓩. 펌핑.퓨퓩 퓩. 펌. 펌핑. 퓩 한다 퓨퓩. 펌핑."
   },
   {
     "default_production": 4,
     "id": 303,
     "price": 5,
     "name": "vacuum",
-    "position_x": 7.67,
+    "position_x": 8.93,
     "position_y": 3.25,
     "position_z": 14.95,
     "camera_position_x": 7.8,
@@ -133,7 +133,7 @@
     "camera_rotation_x": 18.43,
     "camera_rotation_y": 0,
     "scale": 1.0,
-    "description": ""
+    "description": "재료 과학, 기계공학, 열역학의 진보를 통해 만들어진 소형 엔진.\n고도의 소형화 기술과 독보적인 에너지 효율성이 특장점이다."
   },
   {
     "default_production": 4,
@@ -141,16 +141,16 @@
     "price": 5,
     "name": "bicycle",
     "position_x": 12.98,
-    "position_y": 2.526,
+    "position_y": 1.7,
     "position_z": 6.87,
-    "camera_position_x": 0.0,
-    "camera_position_y": 0.0,
-    "camera_position_z": 0.0,
+    "camera_position_x": 10.3,
+    "camera_position_y": 5.0,
+    "camera_position_z": -0.5,
     "rotation_y": -136.914,
-    "camera_rotation_x": 25.0,
+    "camera_rotation_x": 14.5,
     "camera_rotation_y": 37.5,
     "scale": 0.7,
-    "description": ""
+    "description": "운동과 발전을 동시에 할 수 있는 이 시대 최고의 발명품.\n - \"따라만 하세요! 따라만 하세요!\""
   },
   {
     "default_production": 4,
@@ -160,13 +160,13 @@
     "position_x": -15.86,
     "position_y": 0,
     "position_z": 7.76,
-    "camera_position_x": 0.0,
-    "camera_position_y": 0.0,
-    "camera_position_z": 0.0,
+    "camera_position_x": -20.5,
+    "camera_position_y": 5.0,
+    "camera_position_z": -3.35,
     "rotation_y": 180.0,
-    "camera_rotation_x": 25.0,
-    "camera_rotation_y": 37.5,
+    "camera_rotation_x": 28.0,
+    "camera_rotation_y": 28.0,
     "scale": 0.6,
-    "description": ""
+    "description": "에너지를 낭비할 목적으로 설계된 회로.\n가만히 보고 있다보면 시간 낭비에도 효과적인 것 같다."
   }
 ]
