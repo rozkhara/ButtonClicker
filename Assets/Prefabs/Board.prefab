@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Clear!!
+  m_text: "\uCD5C\uB2E8\uD1F4\uADFC \uBA85\uB2E8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e4961c319e0ca234da30099a6dba9c13, type: 2}
+  m_sharedMaterial: {fileID: 3697565123074633826, guid: e4961c319e0ca234da30099a6dba9c13, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8c6847cefa95648b053ab73a5539dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardCanvus: {fileID: 0}
   boardPrefab: {fileID: 6881386691639217620}
   boardLinePrefab: {fileID: 3622106529217359447, guid: 6c4294b8e23fa4c4891da44dd0a8fb8e, type: 3}
   boardOn: 0
@@ -505,10 +506,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ToStart
+  m_text: "\uCC98\uC74C\uC73C\uB85C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e4961c319e0ca234da30099a6dba9c13, type: 2}
+  m_sharedMaterial: {fileID: 3697565123074633826, guid: e4961c319e0ca234da30099a6dba9c13, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

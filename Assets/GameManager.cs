@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         Score = 0;
 
         balancing.CallDP();
+
         StartCoroutine(Fauto_sum(auto_sum));
 
     }
