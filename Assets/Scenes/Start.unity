@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4079,6 +4079,7 @@ GameObject:
   - component: {fileID: 998644830}
   - component: {fileID: 998644829}
   - component: {fileID: 998644828}
+  - component: {fileID: 998644831}
   m_Layer: 5
   m_Name: UserName
   m_TagString: Untagged
@@ -4186,9 +4187,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1895103371}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetUserName
+      - m_Target: {fileID: 998644831}
+        m_TargetAssemblyTypeName: AdHocScript, Assembly-CSharp
+        m_MethodName: UpdateUserName
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4254,6 +4255,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998644826}
   m_CullTransparentMesh: 1
+--- !u!114 &998644831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998644826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8146153e0d9779248bc7a4556ef657bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1015827291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4299,6 +4312,7 @@ GameObject:
   - component: {fileID: 1037016352}
   - component: {fileID: 1037016351}
   - component: {fileID: 1037016350}
+  - component: {fileID: 1037016353}
   m_Layer: 5
   m_Name: FactoryName
   m_TagString: Untagged
@@ -4406,9 +4420,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1895103371}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetFactoryName
+      - m_Target: {fileID: 1037016353}
+        m_TargetAssemblyTypeName: AdHocScript, Assembly-CSharp
+        m_MethodName: UpdateFactoryName
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4474,6 +4488,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037016348}
   m_CullTransparentMesh: 1
+--- !u!114 &1037016353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037016348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8146153e0d9779248bc7a4556ef657bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1040786858
 GameObject:
   m_ObjectHideFlags: 0
