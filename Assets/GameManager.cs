@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public PanelManager panelManager;
     public GameObject desk;
     public bool isNewGame;
+    public bool clearGame;
     public Balancing balancing = new Balancing();
     public float currentTime;
     public float startTime;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     public string userName;
     public GameObject boardCanvas;
     public TimeBoardUI timeBoard;
+
+
     public static GameManager Instance
     {
         get
@@ -288,6 +291,8 @@ public class GameManager : MonoBehaviour
         boardCanvas = GameObject.Find("Canvas Board");
         timeBoard = boardCanvas.transform.GetChild(0).gameObject.GetComponent<TimeBoardUI>();
 
+        clearGame = false;
+
         Fauto_sum(auto_sum);
 
         for (int i = 0; i < prefabs.Count; i++)
@@ -342,8 +347,9 @@ public class GameManager : MonoBehaviour
 
     public void ClearGame()
     {
-        if (isNewGame)
+        if (isNewGame && (clearGame == false))
         {
+            clearGame = true;
             LeaderBoardData leaderBoardData = new LeaderBoardData();
             leaderBoardData.facName = factoryName;
             leaderBoardData.userName = userName;
