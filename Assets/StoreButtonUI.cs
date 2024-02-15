@@ -10,7 +10,8 @@ public class StoreButtonUI : MonoBehaviour
     public GameObject storebutton;
     public GameObject storeview;
 
-    public void onclick(){
+    public void onclick()
+    {
         if (isopen == false)
         {
             isopen = true;

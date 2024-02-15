@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Automata : MonoBehaviour,IObserver, ISubject
+public class Automata : MonoBehaviour, IObserver, ISubject
 {
     //public SpeedController speedController;
     public AutomataData automata_data = new AutomataData();
@@ -25,8 +25,8 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     }
     public void subject_alert()
     {
-        
-        if(quantity >= 0)
+
+        if (quantity >= 0)
         {
             all_production = Balancing.Produce[autoindex, quantity];
         }
@@ -36,7 +36,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
         }
 
         NotifyObserver();
-        if(autoindex == 9 && quantity >= 10)
+        if (autoindex == 9 && quantity >= 10)
         {
             GameManager.Instance.ClearGame();
         }
@@ -44,7 +44,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
 
     public void AddObserver(IObserver observer)
     {
-        if(observer_list == null)
+        if (observer_list == null)
             observer_list = new List<IObserver>();
         observer_list.Add(observer);
     }

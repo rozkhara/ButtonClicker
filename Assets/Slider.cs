@@ -9,7 +9,6 @@ public class Slider_display : MonoBehaviour
     public int min_value = 0;
     public int max_value = 100;
 
-
     // Start is called before the first frame update
     public void Start()
     {
@@ -22,7 +21,6 @@ public class Slider_display : MonoBehaviour
     public void Update()
     {
         Slider_value.text = Sound_slider.value.ToString();
-
     }
     // 슬라이더마다 
     public void MasterChanged()

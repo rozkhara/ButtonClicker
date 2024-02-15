@@ -51,7 +51,7 @@ public class Store : ISubject
         Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
         long totalPrice = 0;
         int quatity = automata.quantity;
-        for (int i = 0;i<10;i++)
+        for (int i = 0; i < 10; i++)
         {
             totalPrice += Balancing.Cost[index, quatity + i];
         }
@@ -64,11 +64,12 @@ public class Store : ISubject
             GameManager.Instance.SetScore(totalPrice, "-");
             automata.SetAutomata(10, "+");
             NotifyObserver();
+            SoundManager.Instance.PlaySFXSound("Upgrade");
             Debug.Log("BuyAutomata");
         }
         else
         {
-
+            SoundManager.Instance.PlaySFXSound("Error");
         }
     }
 

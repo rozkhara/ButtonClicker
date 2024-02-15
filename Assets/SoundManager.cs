@@ -127,5 +127,4 @@ public class SoundManager : MonoBehaviour
     {
         return masterVolume;
     }
-
 }
