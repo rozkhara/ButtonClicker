@@ -41,7 +41,6 @@ public class BuyButtonUI : MonoBehaviour
         {
             button.text = DisplayNumber.ExponentNumber(price);
         }
-        Debug.Log("Buyed");
     }
 
 }

@@ -38,7 +38,6 @@ public class Store : ISubject
             GameManager.Instance.SetScore(price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
-            Debug.Log("BuyAutomata");
         }
         else
         {

@@ -64,11 +64,16 @@ public class TimeBoardUI : MonoBehaviour
 
     public void ReLeaderBoardInstantiate()
     {
-        foreach (Transform child in boardPrefab.transform)
+        /*foreach (Transform child in boardPrefab.transform)
         {
-            Debug.Log("err");
             Destroy(boardPrefab.transform.GetChild(0));
+        }*/
+
+        for(int i = 0; i < boardPrefab.transform.childCount; i++)
+        {
+            Destroy(boardPrefab.transform.GetChild(0).gameObject);
         }
+
         LeaderBoardInstantiate();
     }
 }

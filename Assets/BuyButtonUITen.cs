@@ -48,6 +48,5 @@ public class BuyButtonUITen : MonoBehaviour
         {
             button10.text = DisplayNumber.ExponentNumber(price10);
         }
-        Debug.Log("Buyed");
     }
 }
