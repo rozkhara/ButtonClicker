@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
 
         if (!isLoading)
         {
+            Debug.Log("aa");
             nowIndex++;
         }
         panelManager.InstantiatePanel(nowIndex);
@@ -289,15 +290,17 @@ public class GameManager : MonoBehaviour
         panelManager = FindObjectOfType<PanelManager>();
         touchManager = GameObject.Find("TouchManager")?.GetComponent<TouchManager>();
         boardCanvas = GameObject.Find("Canvas Board");
-        timeBoard = boardCanvas.transform.GetChild(0).gameObject.GetComponent<TimeBoardUI>();
+        timeBoard = boardCanvas.transform.GetChild(2).gameObject.GetComponent<TimeBoardUI>();
 
         clearGame = false;
 
-        Fauto_sum(auto_sum);
+        StopCoroutine(Fauto_sum(auto_sum));
+        StartCoroutine(Fauto_sum(auto_sum));
 
         for (int i = 0; i < prefabs.Count; i++)
         {
             prefabs[i].GetComponent<Automata>().quantity = 0;
+            prefabs[i].GetComponent<Automata>().subject_alert();
         }
     }
 
@@ -349,6 +352,8 @@ public class GameManager : MonoBehaviour
     {
         if (isNewGame && (clearGame == false))
         {
+            nowIndex = 0;
+            isNewGame = true;
             clearGame = true;
             LeaderBoardData leaderBoardData = new LeaderBoardData();
             leaderBoardData.facName = factoryName;

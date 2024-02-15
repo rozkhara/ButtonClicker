@@ -14,6 +14,7 @@ public class LeaderBoardData
 
 public class TimeBoardUI : MonoBehaviour
 {
+    public GameObject boardCanvus;
     public GameObject boardPrefab;
     public GameObject boardLinePrefab;
     public bool boardOn;

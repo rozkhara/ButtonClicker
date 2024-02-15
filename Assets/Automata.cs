@@ -26,13 +26,13 @@ public class Automata : MonoBehaviour, IObserver, ISubject
     public void subject_alert()
     {
 
-        if (quantity >= 0)
+        if (quantity - 1 != -1)
         {
-            all_production = Balancing.Produce[autoindex, quantity];
+            all_production = Balancing.Produce[autoindex,   quantity-1];
         }
         else
         {
-            //all_production = 0;
+            all_production = 0;
         }
 
         NotifyObserver();
