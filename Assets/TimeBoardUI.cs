@@ -70,7 +70,7 @@ public class TimeBoardUI : MonoBehaviour
             Destroy(boardPrefab.transform.GetChild(0));
         }*/
 
-        for(int i = 0; i < boardPrefab.transform.childCount; i++)
+        for (int i = 0; i < boardPrefab.transform.childCount; i++)
         {
             Destroy(boardPrefab.transform.GetChild(0).gameObject);
         }
