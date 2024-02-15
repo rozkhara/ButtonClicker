@@ -65,7 +65,6 @@ public class Store : ISubject
             automata.SetAutomata(10, "+");
             NotifyObserver();
             SoundManager.Instance.PlaySFXSound("Upgrade");
-            Debug.Log("BuyAutomata");
         }
         else
         {

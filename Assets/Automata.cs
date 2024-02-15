@@ -28,7 +28,7 @@ public class Automata : MonoBehaviour, IObserver, ISubject
 
         if (quantity - 1 != -1)
         {
-            all_production = Balancing.Produce[autoindex,   quantity-1];
+            all_production = Balancing.Produce[autoindex, quantity-1];
         }
         else
         {

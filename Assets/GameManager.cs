@@ -135,7 +135,6 @@ public class GameManager : MonoBehaviour
 
         if (!isLoading)
         {
-            Debug.Log("aa");
             nowIndex++;
         }
         panelManager.InstantiatePanel(nowIndex);

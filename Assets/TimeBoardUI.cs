@@ -47,10 +47,8 @@ public class TimeBoardUI : MonoBehaviour
     public void LeaderBoardInstantiate()
     {
         int minCount = (GameManager.Instance.users.Count < 10 ? GameManager.Instance.users.Count : 10);
-        Debug.Log("asdf"+minCount);
         for (int i = 0; i < minCount; i++)
         {
-            Debug.Log(i);
             BoardLineInstantiate(i);
         }
     }
