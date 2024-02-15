@@ -1303,10 +1303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae878f3055da524b851200cd22f471f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBgmAudioClip: {fileID: 0}
+  mainBgmAudioClip: {fileID: 8300000, guid: 21defb794a974fb4e98cf408a6da26e1, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: 07d38dd6b7a93cc44ba43a5fa4ba60a3, type: 3}
   - {fileID: 8300000, guid: 7c5897c8f7559274788a734e5ce304a5, type: 3}
+  - {fileID: 8300000, guid: a9182f75d2bc4d14f992a22bcf7811b0, type: 3}
+  - {fileID: 8300000, guid: 2cb7e65daf027884dabedaa2f267bcf8, type: 3}
+  - {fileID: 8300000, guid: 38695e4d4ec9d1343bef5be1b6b16ec8, type: 3}
 --- !u!4 &366973720
 Transform:
   m_ObjectHideFlags: 0
@@ -7360,6 +7363,7 @@ MonoBehaviour:
   panelManager: {fileID: 0}
   desk: {fileID: 0}
   isNewGame: 0
+  clearGame: 0
   currentTime: 0
   startTime: 0
   automata_list: []
@@ -7377,6 +7381,8 @@ MonoBehaviour:
   nowIndex: 0
   factoryName: 
   userName: 
+  boardCanvas: {fileID: 0}
+  timeBoard: {fileID: 0}
   data:
     money: 0
     automataIndex: 0

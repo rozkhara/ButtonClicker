@@ -38,10 +38,11 @@ public class Store : ISubject
             GameManager.Instance.SetScore(price, "-");
             automata.SetAutomata(1, "+");
             NotifyObserver();
+            SoundManager.Instance.PlaySFXSound("Upgrade");
         }
         else
         {
-
+            SoundManager.Instance.PlaySFXSound("Error");
         }
     }
 

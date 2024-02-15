@@ -10,22 +10,20 @@ public class StoreButtonUI : MonoBehaviour
     public GameObject storebutton;
     public GameObject storeview;
 
-
     public void onclick(){
         if (isopen == false)
         {
             isopen = true;
             storebutton.GetComponent<RectTransform>().anchoredPosition = new Vector2(320, 5);
             storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(650, 0);
-
-
+            SoundManager.Instance.PlaySFXSound("MenuSound");
         }
         else
         {
             isopen = false;
             storebutton.GetComponent<RectTransform>().anchoredPosition = new Vector2(940, 5);
             storeview.GetComponent<RectTransform>().anchoredPosition = new Vector2(1300, 0);
-
+            SoundManager.Instance.PlaySFXSound("MenuSound");
         }
     }
 }

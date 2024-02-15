@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
         volumeBGM = volume;
 
         bgmPlayer.loop = true; // BGM 사운드이므로 루프로 설정
-        bgmPlayer.volume = volume * masterVolumeBGM * masterVolume ;
+        bgmPlayer.volume = volume * masterVolumeBGM * masterVolume;
 
         bgmPlayer.clip = mainBgmAudioClip;
         bgmPlayer.Play();
@@ -109,7 +109,7 @@ public class SoundManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         masterVolumeBGM = volume;
-        bgmPlayer.volume = volumeBGM * masterVolumeBGM * masterVolume ;
+        bgmPlayer.volume = volumeBGM * masterVolumeBGM * masterVolume;
     }
 
     public float GetBGMVolume()
@@ -119,17 +119,13 @@ public class SoundManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        masterVolume = volume; 
+        masterVolume = volume;
+        bgmPlayer.volume = volumeBGM * masterVolumeBGM * masterVolume;
     }
 
     public float GetMasterVolume()
     {
-        return masterVolume; 
+        return masterVolume;
     }
-
-
-
-
-
 
 }
