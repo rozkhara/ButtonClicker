@@ -18,7 +18,7 @@ public class BuyButtonUITen : MonoBehaviour
         price10 = 0;
         for (int i = 0; i < 10; i++)
         {
-            price10 += Balancing.Cost[target, quatity + 1 + i];
+            price10 += Balancing.Cost[target, quatity + i];
         }
         if (GameManager.Instance.isDisplayModeEnglish)
         {
@@ -38,7 +38,7 @@ public class BuyButtonUITen : MonoBehaviour
         price10 = 0;
         for (int i = 0; i < 10; i++)
         {
-            price10 += Balancing.Cost[target, quatity + 1 + i];
+            price10 += Balancing.Cost[target, quatity + i];
         }
         if (GameManager.Instance.isDisplayModeEnglish)
         {

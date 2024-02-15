@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public int nowIndex = 0;
     public string factoryName;
     public string userName;
+    public GameObject boardCanvas;
+    public TimeBoardUI timeBoard;
     public static GameManager Instance
     {
         get
@@ -185,6 +187,12 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(fileName, toJsonData);
     }
 
+    public void QuitGame()
+    {
+        SaveGameData();
+        Application.Quit();
+    }
+
     public bool CheckGameData()
     {
         fileName = Application.persistentDataPath + "/GameData.json";
@@ -277,6 +285,8 @@ public class GameManager : MonoBehaviour
         desk = GameObject.Find("desk_stand03");
         panelManager = FindObjectOfType<PanelManager>();
         touchManager = GameObject.Find("TouchManager")?.GetComponent<TouchManager>();
+        boardCanvas = GameObject.Find("Canvas Board");
+        timeBoard = boardCanvas.transform.GetChild(0).gameObject.GetComponent<TimeBoardUI>();
 
         Fauto_sum(auto_sum);
 
@@ -337,13 +347,14 @@ public class GameManager : MonoBehaviour
             LeaderBoardData leaderBoardData = new LeaderBoardData();
             leaderBoardData.facName = factoryName;
             leaderBoardData.userName = userName;
-            leaderBoardData.claerTime = 100f;
+            leaderBoardData.claerTime = currentTime;
 
             users.Add(leaderBoardData);
 
             SortLeaderBoardData();
+            timeBoard.gameObject.SetActive(true);
+            timeBoard.ReLeaderBoardInstantiate();
 
-            //leaderboard instantiate
         }
     }
 }

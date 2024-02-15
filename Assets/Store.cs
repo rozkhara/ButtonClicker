@@ -28,12 +28,11 @@ public class Store : ISubject
         Automata automata = GameManager.Instance.prefabs[index].GetComponent<Automata>();
         long price = 0;
         int quantity = automata.quantity;
-        price = Balancing.Cost[index, quantity+1];
+        price = Balancing.Cost[index, quantity];
         if (GameManager.Score >= price)
         {
             if (automata.quantity == 0)
             {
-                Debug.Log(1);
                 GameManager.Instance.StartCoroutine(GameManager.Instance.InstantiateAutomata(index));
             }
             GameManager.Instance.SetScore(price, "-");
@@ -54,7 +53,7 @@ public class Store : ISubject
         int quatity = automata.quantity;
         for (int i = 0;i<10;i++)
         {
-            totalPrice += Balancing.Cost[index, quatity + 1 + i];
+            totalPrice += Balancing.Cost[index, quatity + i];
         }
         if (GameManager.Score >= totalPrice)
         {

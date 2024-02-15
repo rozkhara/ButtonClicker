@@ -10,6 +10,7 @@ public class Automata : MonoBehaviour,IObserver, ISubject
     public int quantity = 0;
     public List<IObserver> observer_list = new List<IObserver>();
     public int autoindex;
+    public long accumulate;
 
     public Automata(AutomataData automataData)
     {
@@ -21,13 +22,21 @@ public class Automata : MonoBehaviour,IObserver, ISubject
         automata_data = automataData;
         autoindex = i;
         AddObserver(auto_sum);
-        
     }
     public void subject_alert()
     {
-        all_production = Balancing.Produce[autoindex, quantity];
+        
+        if(quantity >= 0)
+        {
+            all_production = Balancing.Produce[autoindex, quantity];
+        }
+        else
+        {
+            //all_production = 0;
+        }
+
         NotifyObserver();
-        if(automata_data.id == 9 && quantity >= 10)
+        if(autoindex == 9 && quantity >= 10)
         {
             GameManager.Instance.ClearGame();
         }
