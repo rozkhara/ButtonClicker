@@ -38,8 +38,8 @@ public class DisplayNumber
             num /= 10;
             cnt++;
         }
-
-        str = num.ToString();
+        
+        str = num.ToString("0.##");
 
         if (cnt != 0)
         {
