@@ -22,7 +22,7 @@ public class ButtonBehavior : MonoBehaviour
             SoundManager.Instance.PlaySFXSound("ButtonDown");
             this.gameObject.transform.position = pressedPos;
             isDown = true;
-            GameManager.Instance.SetScore(1);
+            GameManager.Instance.SetScore(100);
         }
     }
 
