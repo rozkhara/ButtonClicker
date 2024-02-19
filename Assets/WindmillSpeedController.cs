@@ -6,10 +6,15 @@ public class WindmillSpeedController : MonoBehaviour
 {
     public float animationSpeed = 1.0f;
     private Animator animator;
+    public int level;
+    public float speed;
 
-    float getSpeedByLevel() {
+    float getSpeedByLevel()
+    {
         // 레벨에 따른 값 가져오는 것으로 변경
-        return 0.5f;
+        level = GameManager.Instance.prefabs[0].GetComponent<Automata>().quantity;
+        speed = 9.0f - 8.5f / (1 + 0.01f * level);
+        return speed;
     }
 
     // Start is called before the first frame update
